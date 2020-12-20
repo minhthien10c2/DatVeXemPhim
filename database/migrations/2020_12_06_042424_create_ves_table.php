@@ -17,7 +17,7 @@ class CreateVesTable extends Migration
             $table->id();
             $table->foreignId('IDNguoiDung')->constrained('users');
             $table->foreignId('IDSuatChieu')->constrained('suatchieu');
-            $table->string('SoGhe');
+            $table->foreignId('IDGhe')->constrained('ghe');
             $table->timestamp('NgayMuaVe')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';

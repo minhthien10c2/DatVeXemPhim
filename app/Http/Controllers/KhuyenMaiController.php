@@ -21,6 +21,7 @@ class KhuyenMaiController extends Controller
     public function postThem(Request $request)
     {
         $orm = new KhuyenMai();
+        $orm->TieuDe = $request->tieude;
         $orm->HinhAnh = $request->hinhanh;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
@@ -36,6 +37,7 @@ class KhuyenMaiController extends Controller
     public function postSua(Request $request, $id)
     {
         $orm = KhuyenMai::find($id);
+        $orm->TieuDe = $request->tieude;
         $orm->HinhAnh = $request->hinhanh;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();

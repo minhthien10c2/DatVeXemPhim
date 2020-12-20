@@ -19,9 +19,4 @@ class Ve extends Model
     {
         return $this->belongsTo('App\Models\SuatChieu', 'IDSuatChieu', 'id');
     }
-
-    public function Ghe()
-    {
-        return $this->belongsTo('App\Models\Ghe', 'IDGhe', 'id');
-    }
 }

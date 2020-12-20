@@ -17,8 +17,6 @@ class CreateDinhDangPhimsTable extends Migration
             $table->primary(['IDPhim', 'IDDinhDang']);
             $table->foreignId('IDPhim')->constrained('phim');
             $table->foreignId('IDDinhDang')->constrained('dinhdang');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';
         });
     }

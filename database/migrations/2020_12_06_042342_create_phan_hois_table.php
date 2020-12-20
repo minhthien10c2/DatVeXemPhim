@@ -16,6 +16,7 @@ class CreatePhanHoisTable extends Migration
         Schema::create('phanhoi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('IDNguoiDung')->constrained('users');
+            $table->string('TieuDe');
             $table->string('ChiTiet');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();

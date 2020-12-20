@@ -20,8 +20,9 @@ class PhanHoiController extends Controller
 
     public function postThem(Request $request)
     {
-        $orm = new PhanHoi();
+        $orm = new PhanHoi();   
         $orm->IDNguoiDung = $request->idnguoidung;
+        $orm->TieuDe = $request->tieude;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
         return redirect()->route('phanhoi');
@@ -37,6 +38,7 @@ class PhanHoiController extends Controller
     {
         $orm = PhanHoi::find($id);
         $orm->IDNguoiDung = $request->idnguoidung;
+        $orm->TieuDe = $request->tieude;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
         return redirect()->route('phanhoi');

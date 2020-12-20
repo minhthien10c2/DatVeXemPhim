@@ -17,8 +17,6 @@ class CreateLoaiPhimPhimsTable extends Migration
             $table->primary(['IDPhim', 'IDLoaiPhim']);
             $table->foreignId('IDPhim')->constrained('phim');
             $table->foreignId('IDLoaiPhim')->constrained('loaiphim');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';
         });
     }
