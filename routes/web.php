@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -125,6 +125,11 @@ Route::post('/ve/them', [App\Http\Controllers\VeController::class, 'postThem'])-
 Route::get('/ve/sua/{id}', [App\Http\Controllers\VeController::class, 'getSua'])->name('ve.sua');
 Route::post('/ve/sua/{id}', [App\Http\Controllers\VeController::class, 'postSua'])->name('ve.sua');
 Route::get('/ve/xoa/{id}', [App\Http\Controllers\VeController::class, 'getXoa'])->name('ve.xoa');
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/ok',function(){
+    return view('Admin.layouts.index');
+});
