@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- VENDOR CSS -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/linearicons/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/metisMenu/metisMenu.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/parsleyjs/css/parsley.css') }}" rel="stylesheet">
+    <base href="{{asset('')}}">
+    <link href="home_asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="home_asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="home_asset/vendor/linearicons/style.css" rel="stylesheet">
+    <link href="home_asset/vendor/metisMenu/metisMenu.css" rel="stylesheet">
+    <link href="home_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="home_asset/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="home_asset/vendor/parsleyjs/css/parsley.css" rel="stylesheet">
     
     <!-- MAIN CSS -->
-    <link href="{{ asset('assets/css/main1.css') }}" rel="stylesheet">
+    <link href="home_asset/css/main1.css" rel="stylesheet">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
@@ -51,7 +52,7 @@
             <div class="sidebar-scroll">
                 <div class="user-account">
                     <div class="dropdown">
-                        <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <i class="fa fa-caret-down"></i></a>
+                        <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, {{Auth::user()->name}}<i class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right account">
                             <li>
                                 <form action="NguoiDungDangXuat" method="post">
@@ -90,14 +91,14 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/metisMenu/metisMenu.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-	<script src="assets/vendor/parsleyjs/js/parsley.min.js"></script>
-	<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script src="assets/scripts/common.js"></script>
+	<script src="home_asset/vendor/jquery/jquery.min.js" defer></script>
+	<script src="home_asset/vendor/bootstrap/js/bootstrap.min.js" defer></script>
+	<script src="home_asset/vendor/metisMenu/metisMenu.js" defer></script>
+	<script src="home_asset/vendor/jquery-slimscroll/jquery.slimscroll.min.js" defer></script>
+	<script src="home_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.js" defer></script>
+	<script src="home_asset/vendor/parsleyjs/js/parsley.min.js" defer></script>
+	<script src="home_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" defer></script>
+	<script src="home_asset/scripts/common.js" defer></script>
 	<script>
 	$(function() {		
 		// initialize after multiselect

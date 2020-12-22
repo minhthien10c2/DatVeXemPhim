@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NguoiDung;
+use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NguoiDungController extends Controller
@@ -12,10 +13,22 @@ class NguoiDungController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function postDangNhap(Request $request)
     {
-        //
+       
+
+        if(Auth::attempt(['email'=>$request->Email,'password'=>$request->Password]))
+        {
+            return redirect()->route('home');
+        }
+        else 
+        {
+            return redirect('/');
+            
+        }
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +37,8 @@ class NguoiDungController extends Controller
      */
     public function create()
     {
-        //
+        $nguoidung = User::all();
+        return view('',compact('nguoidung'));
     }
 
     /**

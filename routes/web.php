@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Admin.login');
 });
 
 // Auth::routes();
+
+Route::post('/DangNhap', [App\Http\Controllers\NguoiDungController::class, 'postDangNhap'])->name('DangNhap');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -127,9 +130,7 @@ Route::post('/ve/sua/{id}', [App\Http\Controllers\VeController::class, 'postSua'
 Route::get('/ve/xoa/{id}', [App\Http\Controllers\VeController::class, 'getXoa'])->name('ve.xoa');
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/ok',function(){
     return view('Admin.layouts.index');
 });
