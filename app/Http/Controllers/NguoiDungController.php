@@ -35,10 +35,17 @@ class NguoiDungController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function postThem(Request $request)
     {
-        $nguoidung = User::all();
-        return view('',compact('nguoidung'));
+        $orm = new User();
+        $orm->name = $request->HoTen;
+        $orm->SDT = $request->SDT;
+        $orm->DiaChi = $request->DiaChi;
+        $orm->Quyen = 0;
+        $orm->email = $request->Email;
+        $orm->password = $request->Password;
+        $orm->save();
+        return redirect('/');
     }
 
     /**

@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <!-- VENDOR CSS -->
         <base href="{{asset('')}}">
-        <link rel="stylesheet" href="home_asset/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="admin_asset/vendor/bootstrap/css/bootstrap.min.css">
         <!-- MAIN CSS -->
-        <link rel="stylesheet" href="home_asset/css/main1.css">
+        <link rel="stylesheet" href="admin_asset/css/main1.css">
     
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">

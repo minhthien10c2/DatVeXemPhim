@@ -19,7 +19,12 @@ Route::get('/', function () {
 
 // Auth::routes();
 
+Route::get('/DangKy', function () {
+    return view('Admin.layouts.signup');
+});
+
 Route::post('/DangNhap', [App\Http\Controllers\NguoiDungController::class, 'postDangNhap'])->name('DangNhap');
+Route::post('/DangKy', [App\Http\Controllers\NguoiDungController::class, 'postThem'])->name('DangKy');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
