@@ -9,6 +9,9 @@ class SuatChieu extends Model
 {
     use HasFactory;
 
+    Protected $table = 'suatchieu';
+    Protected $fillable = ['id', 'IDPhim', 'IDPhong', 'NgayChieu', 'GioBatDau', 'GiaVe', 'created_at' ,'updated_at'] ;
+
     public function Ve()
     {
         return $this->hasMany('App\Models\Ve', 'IDSuatChieu', 'id');

@@ -10,12 +10,12 @@ class HeThongRapController extends Controller
     public function getDanhSach()
     {
         $hethongrap = HeThongRap::all();
-        return view('hethongrap.danhsach', compact('hethongrap'));
+        return view('Admin.HeThongRap.DanhSach', compact('hethongrap'));
     }
 
     public function getThem()
     {
-        return view('hethongrap.them');
+        return view('Admin.HeThongRap.Them');
     }
 
     public function postThem(Request $request)
@@ -29,7 +29,7 @@ class HeThongRapController extends Controller
     public function getSua($id)
     {
         $hethongrap = HeThongRap::find($id);
-        return view('hethongrap.sua', compact('hethongrap'));
+        return view('Admin.HeThongRap.Sua', compact('hethongrap'));
     }
 
     public function postSua(Request $request, $id)

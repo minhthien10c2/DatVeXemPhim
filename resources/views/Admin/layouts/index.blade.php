@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- VENDOR CSS -->
     <base href="{{asset('')}}">
-    <link href="home_asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="home_asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="home_asset/vendor/linearicons/style.css" rel="stylesheet">
-    <link href="home_asset/vendor/metisMenu/metisMenu.css" rel="stylesheet">
-    <link href="home_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
-    <link href="home_asset/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-    <link href="home_asset/vendor/parsleyjs/css/parsley.css" rel="stylesheet">
+    <link href="admin_asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin_asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="admin_asset/vendor/linearicons/style.css" rel="stylesheet">
+    <link href="admin_asset/vendor/metisMenu/metisMenu.css" rel="stylesheet">
+    <link href="admin_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
+    <link href="admin_asset/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="admin_asset/vendor/parsleyjs/css/parsley.css" rel="stylesheet">
     
     <!-- MAIN CSS -->
-    <link href="home_asset/css/main1.css" rel="stylesheet">
+    <link href="admin_asset/css/main1.css" rel="stylesheet">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
@@ -81,7 +81,7 @@
         <!-- END LEFT SIDEBAR -->
         
         <!-- MAIN CONTENT-->
-        
+        @yield('content')
         <!--END MAIN CONTENT-->
         
         <div class="clearfix"></div>
@@ -91,19 +91,13 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="home_asset/vendor/jquery/jquery.min.js" defer></script>
-	<script src="home_asset/vendor/bootstrap/js/bootstrap.min.js" defer></script>
-	<script src="home_asset/vendor/metisMenu/metisMenu.js" defer></script>
-	<script src="home_asset/vendor/jquery-slimscroll/jquery.slimscroll.min.js" defer></script>
-	<script src="home_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.js" defer></script>
-	<script src="home_asset/vendor/parsleyjs/js/parsley.min.js" defer></script>
-	<script src="home_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" defer></script>
-	<script src="home_asset/scripts/common.js" defer></script>
-	<script>
-	$(function() {		
-		// initialize after multiselect
-		$('#basic-form').parsley();
-	
-	});
-	</script>
+	<script src="admin_asset/vendor/jquery/jquery.min.js" defer></script>
+	<script src="admin_asset/vendor/bootstrap/js/bootstrap.min.js" defer></script>
+	<script src="admin_asset/vendor/metisMenu/metisMenu.js" defer></script>
+	<script src="admin_asset/vendor/jquery-slimscroll/jquery.slimscroll.min.js" defer></script>
+	<script src="admin_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.js" defer></script>
+	<script src="admin_asset/vendor/parsleyjs/js/parsley.min.js" defer></script>
+	<script src="admin_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" defer></script>
+	<script src="admin_asset/scripts/common.js" defer></script>
+	<script src="admin_asset/scripts/mutiselect.js" defer></script>
 </body>

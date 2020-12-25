@@ -10,12 +10,12 @@ class PhongController extends Controller
     public function getDanhSach()
     {
         $phong = Phong::all();
-        return view('phong.danhsach', compact('phong'));
+        return view('Admin.Phong.DanhSach', compact('phong'));
     }
 
     public function getThem()
     {
-        return view('phong.them');
+        return view('Admin.Phong.Them');
     }
 
     public function postThem(Request $request)
@@ -32,7 +32,7 @@ class PhongController extends Controller
     public function getSua($id)
     {
         $phong = Phong::find($id);
-        return view('phong.sua', compact('phong'));
+        return view('Admin.Phong.Sua', compact('phong'));
     }
 
     public function postSua(Request $request, $id)

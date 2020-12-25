@@ -10,12 +10,12 @@ class SuatChieuController extends Controller
     public function getDanhSach()
     {
         $suatchieu = SuatChieu::all();
-        return view('suatchieu.danhsach', compact('suatchieu'));
+        return view('Admin.SuatChieu.DanhSach', compact('suatchieu'));
     }
 
     public function getThem()
     {
-        return view('suatchieu.them');
+        return view('Admin.SuatChieu.Them');
     }
 
     public function postThem(Request $request)
@@ -33,7 +33,7 @@ class SuatChieuController extends Controller
     public function getSua($id)
     {
         $suatchieu = SuatChieu::find($id);
-        return view('suatchieu.sua', compact('suatchieu'));
+        return view('Admin.SuatChieu.Sua', compact('suatchieu'));
     }
 
     public function postSua(Request $request, $id)

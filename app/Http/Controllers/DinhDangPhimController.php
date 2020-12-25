@@ -10,12 +10,12 @@ class DinhDangPhimController extends Controller
     public function getDanhSach()
     {
         $dinhdangphim = DinhDangPhim::all();
-        return view('dinhdangphim.danhsach', compact('dinhdangphim'));
+        return view('Admin.DinhDangPhim.DanhSach', compact('dinhdangphim'));
     }
 
     public function getThem()
     {
-        return view('dinhdangphim.them');
+        return view('Admin.DinhDangPhim.Them');
     }
 
     public function postThem(Request $request)
@@ -30,7 +30,7 @@ class DinhDangPhimController extends Controller
     public function getSua($id)
     {
         $dinhdang_phim = DinhDangPhim::find($id);
-        return view('dinhdang_phim.sua', compact('dinhdangphim'));
+        return view('Admin.DinhDangPhim.Sua', compact('dinhdangphim'));
     }
 
     public function postSua(Request $request, $id)

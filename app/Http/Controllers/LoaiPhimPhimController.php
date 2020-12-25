@@ -10,12 +10,12 @@ class LoaiPhimPhimController extends Controller
     public function getDanhSach()
     {
         $loaiphimphim = LoaiPhimPhim::all();
-        return view('loaiphimphim.danhsach', compact('loaiphimphim'));
+        return view('Admin.LoaiPhimPhim.DanhSach', compact('loaiphimphim'));
     }
 
     public function getThem()
     {
-        return view('loaiphimphim.them');
+        return view('Admin.LoaiPhimPhim.Them');
     }
 
     public function postThem(Request $request)
@@ -30,7 +30,7 @@ class LoaiPhimPhimController extends Controller
     public function getSua($id)
     {
         $loaiphimphim = LoaiPhimPhim::find($id);
-        return view('loaiphimphim.sua', compact('loaiphimphim'));
+        return view('Admin.LoaiPhimPhim.Sua', compact('loaiphimphim'));
     }
 
     public function postSua(Request $request, $id)

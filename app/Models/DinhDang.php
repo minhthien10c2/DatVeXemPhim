@@ -9,6 +9,9 @@ class DinhDang extends Model
 {
     use HasFactory;
 
+    Protected $table = 'dinhdang';
+    Protected $fillable = ['id', 'TenDinhDang', 'created_at', 'updated_at'];
+
     public function DinhDang_Phim()
     {
         return $this->hasMany('App\Models\DinhDang_Phim', 'IDDinhDang', 'id');

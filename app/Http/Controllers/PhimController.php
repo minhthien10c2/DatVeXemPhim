@@ -10,12 +10,12 @@ class PhimController extends Controller
     public function getDanhSach()
     {
         $phim = Phim::all();
-        return view('phim.danhsach', compact('phim'));
+        return view('Admin.Phim.DanhSach', compact('phim'));
     }
 
     public function getThem()
     {
-        return view('phim.them');
+        return view('Admin.Phim.Them');
     }
 
     public function postThem(Request $request)
@@ -35,7 +35,7 @@ class PhimController extends Controller
     public function getSua($id)
     {
         $phim = Phim::find($id);
-        return view('phim.sua', compact('phim'));
+        return view('Admin.Phim.Sua', compact('phim'));
     }
 
     public function postSua(Request $request, $id)

@@ -10,12 +10,12 @@ class PhanHoiController extends Controller
     public function getDanhSach()
     {
         $phanhoi = PhanHoi::all();
-        return view('phanhoi.danhsach', compact('phanhoi'));
+        return view('Admin.PhanHoi.DanhSach', compact('phanhoi'));
     }
 
     public function getThem()
     {
-        return view('phanhoi.them');
+        return view('Admin.PhanHoi.Them');
     }
 
     public function postThem(Request $request)
@@ -31,7 +31,7 @@ class PhanHoiController extends Controller
     public function getSua($id)
     {
         $phanhoi = PhanHoi::find($id);
-        return view('phanhoi.sua', compact('phanhoi'));
+        return view('Admin.PhanHoi.Sua', compact('phanhoi'));
     }
 
     public function postSua(Request $request, $id)

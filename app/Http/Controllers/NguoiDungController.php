@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class NguoiDungController extends Controller
 {
@@ -43,7 +44,7 @@ class NguoiDungController extends Controller
         $orm->DiaChi = $request->DiaChi;
         $orm->Quyen = 0;
         $orm->email = $request->Email;
-        $orm->password = $request->Password;
+        $orm->password = Hash::make($request->Password);
         $orm->save();
         return redirect('/');
     }

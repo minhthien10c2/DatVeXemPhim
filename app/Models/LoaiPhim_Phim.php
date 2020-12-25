@@ -9,6 +9,9 @@ class LoaiPhim_Phim extends Model
 {
     use HasFactory;
 
+    Protected $table = 'loaiphim_phim';
+    Protected $fillable = ['IDPhim', 'IDLoaiPhim', 'created_at' ,'updated_at'] ;
+    
     public function Phim()
     {
         return $this->belongsTo('App\Models\Phim', 'IDPhim', 'id');

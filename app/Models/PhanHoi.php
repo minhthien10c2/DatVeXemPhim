@@ -9,6 +9,9 @@ class PhanHoi extends Model
 {
     use HasFactory;
 
+    Protected $table = 'phanhoi';
+    Protected $fillable = ['id', 'IDNguoiDung', 'ChiTiet', 'created_at' ,'updated_at'] ;
+
     public function User()
     {
         return $this->belongsTo('App\Models\User', 'IDNguoiDung', 'id');

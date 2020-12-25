@@ -10,12 +10,12 @@ class GheController extends Controller
     public function getDanhSach()
     {
         $ghe = Ghe::all();
-        return view('ghe.danhsach', compact('ghe'));
+        return view('Admin.Ghe.DanhSach', compact('ghe'));
     }
 
     public function getThem()
     {
-        return view('ghe.them');
+        return view('Admin.Ghe.Them');
     }
 
     public function postThem(Request $request)
@@ -32,7 +32,7 @@ class GheController extends Controller
     public function getSua($id)
     {
         $ghe = Ghe::find($id);
-        return view('ghe.sua', compact('ghe'));
+        return view('Admin.Ghe.Sua', compact('ghe'));
     }
 
     public function postSua(Request $request, $id)

@@ -9,6 +9,9 @@ class Phong extends Model
 {
     use HasFactory;
 
+    Protected $table = 'phong';
+    Protected $fillable = ['id', 'IDRap', 'IDDinhDang', 'TenPhong', 'SoGheToiDa', 'created_at' ,'updated_at'] ;
+
     public function Rap()
     {
         return $this->belongsTo('App\Models\Rap', 'IDRap', 'id');

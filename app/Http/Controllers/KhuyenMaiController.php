@@ -10,12 +10,12 @@ class KhuyenMaiController extends Controller
     public function getDanhSach()
     {
         $khuyenmai = KhuyenMai::all();
-        return view('khuyenmai.danhsach', compact('khuyenmai'));
+        return view('Admin.KhuyenMai.DanhSach', compact('khuyenmai'));
     }
 
     public function getThem()
     {
-        return view('khuyenmai.them');
+        return view('Admin.KhuyenMai.Them');
     }
 
     public function postThem(Request $request)
@@ -31,7 +31,7 @@ class KhuyenMaiController extends Controller
     public function getSua($id)
     {
         $khuyenmai = KhuyenMai::find($id);
-        return view('khuyenmai.sua', compact('khuyenmai'));
+        return view('Admin.KhuyenMai.Sua', compact('khuyenmai'));
     }
 
     public function postSua(Request $request, $id)

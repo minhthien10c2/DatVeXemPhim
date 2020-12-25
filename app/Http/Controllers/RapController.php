@@ -10,12 +10,12 @@ class RapController extends Controller
     public function getDanhSach()
     {
         $rap = Rap::all();
-        return view('rap.danhsach', compact('rap'));
+        return view('Admin.Rap.DanhSach', compact('rap'));
     }
 
     public function getThem()
     {
-        return view('rap.them');
+        return view('Admin.Rap.Them');
     }
 
     public function postThem(Request $request)
@@ -32,7 +32,7 @@ class RapController extends Controller
     public function getSua($id)
     {
         $rap = Rap::find($id);
-        return view('rap.sua', compact('rap'));
+        return view('Admin.Rap.Sua', compact('rap'));
     }
 
     public function postSua(Request $request, $id)

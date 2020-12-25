@@ -10,12 +10,12 @@ class QuanHuyenController extends Controller
     public function getDanhSach()
     {
         $quanhuyen = QuanHuyen::all();
-        return view('quanhuyen.danhsach', compact('quanhuyen'));
+        return view('Admin.QuanHuyen.DanhSach', compact('quanhuyen'));
     }
 
     public function getThem()
     {
-        return view('quanhuyen.them');
+        return view('Admin.QuanHuyen.Them');
     }
 
     public function postThem(Request $request)
@@ -30,7 +30,7 @@ class QuanHuyenController extends Controller
     public function getSua($id)
     {
         $quanhuyen = QuanHuyen::find($id);
-        return view('quanhuyen.sua', compact('quanhuyen'));
+        return view('Admin.QuanHuyen.Sua', compact('quanhuyen'));
     }
 
     public function postSua(Request $request, $id)
