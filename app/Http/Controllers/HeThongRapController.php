@@ -23,7 +23,7 @@ class HeThongRapController extends Controller
         $orm = new HeThongRap();
         $orm->TenHeThongRap = $request->tenhethongrap;
         $orm->save();
-        return redirect()->route('hethongrap');
+        return redirect()->route('hethongrap.danhsach')->with('mes','Thêm thành công');
     }
 
     public function getSua($id)
@@ -37,13 +37,13 @@ class HeThongRapController extends Controller
         $orm = HeThongRap::find($id);
         $orm->TenHeThongRap = $request->tenhethongrap;
         $orm->save();
-        return redirect()->route('hethongrap');
+        return redirect()->route('hethongrap.danhsach')->with('mes','Sửa thành công ');
     }
 
     public function getXoa($id)
     {
         $orm = HeThongRap::find($id);
         $orm->delete();
-        return redirect()->route('hethongrap');
+        return redirect()->route('hethongrap.danhsach')->with('mes','Xóa thành công');
     }
 }

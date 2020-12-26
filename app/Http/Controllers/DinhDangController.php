@@ -24,7 +24,7 @@ class DinhDangController extends Controller
         $orm = new DinhDang();
         $orm->TenDinhDang = $request->tendinhdang;
         $orm->save();
-        return redirect()->route('dinhdang');
+        return redirect()->route('dinhdang.danhsach')->with('mes','Thêm thành công');
     }
 
     public function getSua($id)
@@ -38,14 +38,14 @@ class DinhDangController extends Controller
         $orm = DinhDang::find($id);
         $orm->TenDinhDang = $request->tendinhdang;
         $orm->save();
-        return redirect()->route('dinhdang');
+        return redirect()->route('dinhdang.danhsach')->with('mes','Sửa thành công ');
     }
 
     public function getXoa($id)
     {
         $orm = DinhDang::find($id);
         $orm->delete();
-        return redirect()->route('dinhdang');
+        return redirect()->route('dinhdang.danhsach')->with('mes','Xóa thành công');
     }
     
     /**

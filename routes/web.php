@@ -29,12 +29,16 @@ Route::post('/DangKy', [App\Http\Controllers\NguoiDungController::class, 'postTh
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dinhdang', [App\Http\Controllers\DinhDangController::class, 'getDanhSach'])->name('dinhdang');
-Route::get('/dinhdang/them', [App\Http\Controllers\DinhDangController::class, 'getThem'])->name('dinhdang.them');
-Route::post('/dinhdang/them', [App\Http\Controllers\DinhDangController::class, 'postThem'])->name('dinhdang.them');
-Route::get('/dinhdang/sua/{id}', [App\Http\Controllers\DinhDangController::class, 'getSua'])->name('dinhdang.sua');
-Route::post('/dinhdang/sua/{id}', [App\Http\Controllers\DinhDangController::class, 'postSua'])->name('dinhdang.sua');
-Route::get('/dinhdang/xoa/{id}', [App\Http\Controllers\DinhDangController::class, 'getXoa'])->name('dinhdang.xoa');
+Route::group(['prefix'=>'dinhdang','middleware'=>'loginadmin'], function(){
+    Route::get('/danhsach', [App\Http\Controllers\DinhDangController::class, 'getDanhSach'])->name('dinhdang.danhsach');
+    Route::get('/them', [App\Http\Controllers\DinhDangController::class, 'getThem'])->name('dinhdang.them');
+    Route::post('/them', [App\Http\Controllers\DinhDangController::class, 'postThem'])->name('dinhdang.them');
+    Route::get('/sua/{id}', [App\Http\Controllers\DinhDangController::class, 'getSua'])->name('dinhdang.sua');
+    Route::post('/sua/{id}', [App\Http\Controllers\DinhDangController::class, 'postSua'])->name('dinhdang.sua');
+    Route::get('/xoa/{id}', [App\Http\Controllers\DinhDangController::class, 'getXoa'])->name('dinhdang.xoa');
+});
+
+
 
 Route::get('/dinhdangphim', [App\Http\Controllers\DinhDangPhimController::class, 'getDanhSach'])->name('dinhdangphim');
 Route::get('/dinhdangphim/them', [App\Http\Controllers\DinhDangPhimController::class, 'getThem'])->name('dinhdangphim.them');
@@ -50,12 +54,16 @@ Route::get('/ghe/sua/{id}', [App\Http\Controllers\GheController::class, 'getSua'
 Route::post('/ghe/sua/{id}', [App\Http\Controllers\GheController::class, 'postSua'])->name('ghe.sua');
 Route::get('/ghe/xoa/{id}', [App\Http\Controllers\GheController::class, 'getXoa'])->name('ghe.xoa');
 
-Route::get('/hethongrap', [App\Http\Controllers\HeThongRapController::class, 'getDanhSach'])->name('hethongrap');
-Route::get('/hethongrap/them', [App\Http\Controllers\HeThongRapController::class, 'getThem'])->name('hethongrap.them');
-Route::post('/hethongrap/them', [App\Http\Controllers\HeThongRapController::class, 'postThem'])->name('hethongrap.them');
-Route::get('/hethongrap/sua/{id}', [App\Http\Controllers\HeThongRapController::class, 'getSua'])->name('hethongrap.sua');
-Route::post('/hethongrap/sua/{id}', [App\Http\Controllers\HeThongRapController::class, 'postSua'])->name('hethongrap.sua');
-Route::get('/hethongrap/xoa/{id}', [App\Http\Controllers\HeThongRapController::class, 'getXoa'])->name('hethongrap.xoa');
+Route::group(['prefix'=>'hethongrap','middleware'=>'loginadmin'], function(){
+    Route::get('/danhsach', [App\Http\Controllers\HeThongRapController::class, 'getDanhSach'])->name('hethongrap.danhsach');
+    Route::get('/them', [App\Http\Controllers\HeThongRapController::class, 'getThem'])->name('hethongrap.them');
+    Route::post('/them', [App\Http\Controllers\HeThongRapController::class, 'postThem'])->name('hethongrap.them');
+    Route::get('/sua/{id}', [App\Http\Controllers\HeThongRapController::class, 'getSua'])->name('hethongrap.sua');
+    Route::post('/sua/{id}', [App\Http\Controllers\HeThongRapController::class, 'postSua'])->name('hethongrap.sua');
+    Route::get('/xoa/{id}', [App\Http\Controllers\HeThongRapController::class, 'getXoa'])->name('hethongrap.xoa');
+});
+
+
 
 Route::get('/khuyenmai', [App\Http\Controllers\KhuyenMaiController::class, 'getDanhSach'])->name('khuyenmai');
 Route::get('/khuyenmai/them', [App\Http\Controllers\KhuyenMaiController::class, 'getThem'])->name('khuyenmai.them');
