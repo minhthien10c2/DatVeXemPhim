@@ -37,7 +37,7 @@
 				<div class="col-12">
 					<div class="sign__content">
 						<!-- registration form -->
-						<form action="{{route ('DangKy')}}" class="sign__form" method="POST">
+						<form action="{{route ('dangky')}}" class="sign__form" method="POST">
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<a href="#" class="sign__title">
 								<span>BUG</span> Cinema
@@ -70,7 +70,7 @@
 							
 							<button class="sign__btn" type="submit">Đăng ký</button>
 
-							<span class="sign__text">Bạn đã có tài khoản? <a href="DangNhap.jsp">Đăng nhập!</a></span>
+							<span class="sign__text">Bạn đã có tài khoản? <a href="{{route('dangnhap')}}">Đăng nhập!</a></span>
 						</form>
 						<!-- registration form -->
 					</div>

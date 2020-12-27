@@ -14,14 +14,13 @@
     <link href="admin_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
     <link href="admin_asset/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <link href="admin_asset/vendor/parsleyjs/css/parsley.css" rel="stylesheet">
-    
     <!-- MAIN CSS -->
     <link href="admin_asset/css/main1.css" rel="stylesheet">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="icon" type="image/png" sizes="96x96" href="img/LOGO.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="home_asset/img/LOGO.png">
 </head>
 
 <body>
@@ -67,5 +66,5 @@
 	<script src="admin_asset/vendor/parsleyjs/js/parsley.min.js" defer></script>
 	<script src="admin_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" defer></script>
 	<script src="admin_asset/scripts/common.js" defer></script>
-	<script src="admin_asset/scripts/mutiselect.js" defer></script>
+	<script src="admin_asset/scripts/multiselect.js" defer></script>
 </body>

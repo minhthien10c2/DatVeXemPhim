@@ -28,7 +28,7 @@
                                 <div class="logo text-center"><img src="img/LOGO.png" alt="DiffDash"></div>
                                 <p class="lead">Đăng nhập</p>
                             </div>
-                            <form class="form-auth-small" action="{{ route('DangNhap') }}" method = "post">
+                            <form class="form-auth-small" action="{{ route('dangnhap') }}" method = "post">
                                 
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group">

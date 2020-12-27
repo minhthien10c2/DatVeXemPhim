@@ -8,7 +8,7 @@
 
 				<div class="row">
 					<div class="col-md-12">				
-						<h3 style="float:left; display: inline;">Quản lý vé</h3>
+						<h3 style="display: inline;" class="text-left">Quản lý vé</h3>
 					</div>		
 				</div>
 
@@ -32,7 +32,7 @@
 							</thead>
 							<tbody>
 
-								<tr class="table-active">
+								<tr>
 									<td> <%= nd.getHoTen() %> </td>
 									<td> <%= htr.getTenHeThongRap() %> </td>
 									<td> <%= r.getTenRap() %> </td>
@@ -43,7 +43,19 @@
 									<td> <%= sc.getGioBatDau() %> </td>
 									<td> <%= sc.getGiaVe() %> </td>	
 									<td> <%= ghe.getTenGhe() %> </td>																									
-								</tr>			  
+								</tr>	
+								<tr>
+									<td> <%= nd.getHoTen() %> </td>
+									<td> <%= htr.getTenHeThongRap() %> </td>
+									<td> <%= r.getTenRap() %> </td>
+									<td> <%= phong.getTenPhong() %> </td>
+									<td> <%= dd.getTenDinhDang() %> </td>
+									<td> <%= p.getTenPhim() %> </td>
+									<td> <%= sc.getNgayChieu() %> </td>
+									<td> <%= sc.getGioBatDau() %> </td>
+									<td> <%= sc.getGiaVe() %> </td>	
+									<td> <%= ghe.getTenGhe() %> </td>																									
+								</tr>									  
 							</tbody>
 					  	</table>
 					</div>

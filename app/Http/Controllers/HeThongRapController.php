@@ -20,6 +20,10 @@ class HeThongRapController extends Controller
 
     public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'tenhethongrap' => ['required', 'unique:hethongrap'],
+        ]);
+
         $orm = new HeThongRap();
         $orm->TenHeThongRap = $request->tenhethongrap;
         $orm->save();
@@ -34,6 +38,10 @@ class HeThongRapController extends Controller
 
     public function postSua(Request $request, $id)
     {
+        $this->validate($request, [
+            'tenhethongrap' => ['required', 'unique:hethongrap'],
+        ]);
+        
         $orm = HeThongRap::find($id);
         $orm->TenHeThongRap = $request->tenhethongrap;
         $orm->save();

@@ -15,17 +15,22 @@ class PhanHoiController extends Controller
 
     public function getThem()
     {
-        return view('Admin.PhanHoi.Them');
+        return view('Admin.PhanHoi.Them')->with('mes','Thêm thành công');
     }
 
     public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'tieude' => ['required'],
+            'chitiet' => ['required'],
+        ]);
+
         $orm = new PhanHoi();   
         $orm->IDNguoiDung = $request->idnguoidung;
         $orm->TieuDe = $request->tieude;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
-        return redirect()->route('phanhoi');
+        return redirect()->route('phanhoi.danhsach');
     }
 
     public function getSua($id)
@@ -41,13 +46,13 @@ class PhanHoiController extends Controller
         $orm->TieuDe = $request->tieude;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
-        return redirect()->route('phanhoi');
+        return redirect()->route('phanhoi.danhsach')->with('mes','Sửa thành công');
     }
 
     public function getXoa($id)
     {
         $orm = PhanHoi::find($id);
         $orm->delete();
-        return redirect()->route('phanhoi');
+        return redirect()->route('phanhoi.danhsach')->with('mes','Xóa thành công');
     }
 }

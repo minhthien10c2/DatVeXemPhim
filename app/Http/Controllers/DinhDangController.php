@@ -21,6 +21,10 @@ class DinhDangController extends Controller
 
     public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'tendinhdang' => ['required', 'unique:dinhdang'],
+        ]);
+
         $orm = new DinhDang();
         $orm->TenDinhDang = $request->tendinhdang;
         $orm->save();
@@ -35,6 +39,10 @@ class DinhDangController extends Controller
 
     public function postSua(Request $request, $id)
     {
+        $this->validate($request, [
+            'tendinhdang' => ['required', 'unique:dinhdang'],
+        ]);
+        
         $orm = DinhDang::find($id);
         $orm->TenDinhDang = $request->tendinhdang;
         $orm->save();

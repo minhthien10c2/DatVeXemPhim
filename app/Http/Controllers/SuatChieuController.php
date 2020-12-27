@@ -20,14 +20,22 @@ class SuatChieuController extends Controller
 
     public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'idphim' => ['required'],
+            'idphong' => ['required'],
+            'ngaychieu' => ['required'],
+            'giobatdau' => ['required'],
+            'giave' => ['required'],
+        ]);
+
         $orm = new SuatChieu();
         $orm->IDPhim = $request->idphim;
         $orm->IDPhong = $request->idphong;
         $orm->NgayChieu = $request->ngaychieu;
-        $orm->NgayBatDau = $request->ngaybatdau;
+        $orm->GioBatDau = $request->giobatdau;
         $orm->GiaVe = $request->giave;
         $orm->save();
-        return redirect()->route('suatchieu');
+        return redirect()->route('suatchieu.danhsach')->with('mes','Thêm thành công');
     }
 
     public function getSua($id)
@@ -38,6 +46,14 @@ class SuatChieuController extends Controller
 
     public function postSua(Request $request, $id)
     {
+        $this->validate($request, [
+            'idphim' => ['required'],
+            'idphong' => ['required'],
+            'ngaychieu' => ['required'],
+            'giobatdau' => ['required'],
+            'giave' => ['required'],
+        ]);
+        
         $orm = SuatChieu::find($id);
         $orm->IDPhim = $request->idphim;
         $orm->IDPhong = $request->idphong;
@@ -45,13 +61,13 @@ class SuatChieuController extends Controller
         $orm->NgayBatDau = $request->ngaybatdau;
         $orm->GiaVe = $request->giave;
         $orm->save();
-        return redirect()->route('suatchieu');
+        return redirect()->route('suatchieu.danhsach')->with('mes','Sửa thành công');
     }
 
     public function getXoa($id)
     {
         $orm = SuatChieu::find($id);
         $orm->delete();
-        return redirect()->route('suatchieu');
+        return redirect()->route('suatchieu.danhsach')->with('mes','Xóa thành công');
     }
 }

@@ -20,10 +20,14 @@ class ThanhPhoController extends Controller
 
     public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'tenthanhpho' => ['required','unique:thanhpho'],
+        ]);
+
         $orm = new ThanhPho();
         $orm->TenThanhPho = $request->tenthanhpho;
         $orm->save();
-        return redirect()->route('thanhpho');
+        return redirect()->route('thanhpho.danhsach')->with('mes','Thêm thành công');
     }
 
     public function getSua($id)
@@ -37,13 +41,13 @@ class ThanhPhoController extends Controller
         $orm = ThanhPho::find($id);
         $orm->TenThanhPho = $request->tenthanhpho;
         $orm->save();
-        return redirect()->route('thanhpho');
+        return redirect()->route('thanhpho.danhsach')->with('mes','Sửa thành công');
     }
 
     public function getXoa($id)
     {
         $orm = ThanhPho::find($id);
         $orm->delete();
-        return redirect()->route('thanhpho');
+        return redirect()->route('thanhpho.danhsach')->with('mes','Xóa thành công');
     }
 }

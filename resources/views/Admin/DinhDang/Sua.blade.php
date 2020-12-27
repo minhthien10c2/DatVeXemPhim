@@ -14,9 +14,11 @@
 									<h1 class="page-title">Sửa định dạng</h1>
 								</div>							
 								<div class="form-group">
-									<label>Tên định dạng</label>
-									
-									<input type="text" name="tendinhdang" class="form-control" value="{{$dinhdang->TenDinhDang}}" required>
+									<label>Tên định dạng</label>						
+									<input type="text" name="tendinhdang" value="{{$dinhdang->TenDinhDang}}" class="form-control  @error('tenloai') is-invalid @enderror" value="{{ old('tendinhdang') }}">
+									@error('tendinhdang')
+										<div class="text-danger"><strong>{{ $message }}</strong></div>
+									@enderror
 								</div>
 								<button type="submit" class="btn btn-primary">Sửa định dạng</button>
 							</form>
