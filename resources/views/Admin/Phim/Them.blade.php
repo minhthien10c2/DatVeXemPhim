@@ -8,7 +8,7 @@
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
 						<div class="panel-content">			
-							<form action="{{ route ('phim.them') }}" method="post">
+							<form action="{{ route ('phim.them') }}" method="post" enctype="multipart/form-data">
 								@csrf
 								<div class="section-heading">
 									<h1 class="page-title">Thêm phim</h1>

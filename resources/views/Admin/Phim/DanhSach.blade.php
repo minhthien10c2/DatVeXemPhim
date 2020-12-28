@@ -48,7 +48,7 @@
 									<td>{{$p->Trailer}}</td>
 									<td>{{$p->LuaTuoi}}</td>
 									<td style="width:300px">{{$p->MoTa}}</td>
-									<td style="width:100px"><img style="width:100px" src="{{$p->HinhAnh}}"></td>
+									<td style="width:100px"><img style="width:100px" src="{{ env('APP_URL') . '/storage/app/IMG/' . $p->HinhAnh }}" ></td>
 									<td>{{$p->NamSanXuat}}</td>
 									<td  class="text-right"><a href="{{route ('phim.sua',['id'=>$p->id])}}">Sửa</a></td>
 									<td  class="text-left"><a onclick="return confirm('Bạn có muốn xóa?');" href="{{route ('phim.xoa',['id'=>$p->id])}}">Xóa</a></td>

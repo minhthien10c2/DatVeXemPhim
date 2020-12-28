@@ -77,7 +77,7 @@
 						<div class="form-group">
 							<label for="exampleInputFile" class="control-label">Hình ảnh</label>
 							<input type="file" name="hinhanh" value="{{$phim->HinhAnh}}" id="exampleInputFile">
-							<img src="admin_asset/img/{{$phim->HinhAnh}}" />
+							<img style="margin-top:10px;width: 100px;" src="{{ env('APP_URL') . '/storage/app/IMG/' . $phim->HinhAnh }}" />
 						</div>
 
 						<div class="form-group">
