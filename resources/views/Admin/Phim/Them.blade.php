@@ -21,7 +21,7 @@
 								<div class="form-group">
 									<label class="control-label">Định dạng</label>
 									<br>
-									<select id="multiselect1" name="loaiphim" class="multiselect multiselect-custom form-control" multiple="multiple">
+									<select id="multiselect1" name="dinhdang[]" class="multiselect multiselect-custom form-control" multiple="multiple">
 										@foreach($dinhdang as $dd)
 											<option value="{{$dd->id}}">{{$dd->TenDinhDang}}</option>
 										@endforeach
@@ -31,7 +31,7 @@
 								<div class="form-group">
 									<label class="control-label">Loại phim</label>
 									<br>
-									<select id="multiselect2" name="loaiphim" class="multiselect multiselect-custom form-control" multiple="multiple">
+									<select id="multiselect2" name="loaiphim[]" class="multiselect multiselect-custom form-control" multiple="multiple">
 										
 										@foreach($loaiphim as $lp)
 											<option value="{{$lp->id}}">{{$lp->TenLoaiPhim}}</option>

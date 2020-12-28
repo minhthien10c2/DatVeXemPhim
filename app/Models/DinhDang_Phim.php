@@ -10,7 +10,8 @@ class DinhDang_Phim extends Model
     use HasFactory;
 
     Protected $table = 'dinhdang_phim';
-    Protected $fillable = ['IDPhim', 'IDDinhDang', 'created_at' ,'updated_at'] ;
+    Protected $fillable = ['IDPhim', 'IDDinhDang'] ;
+    public $timestamps = false;
 
     public function Phim()
     {

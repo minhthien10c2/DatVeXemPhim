@@ -26,16 +26,30 @@ class PhimController extends Controller
 
     public function postThem(Request $request)
     {
-        $this->validate($request, [
-            'tenphim' => ['required', 'unique:phim'],
-            'thoiluong' => ['required', 'max:3', 'numeric'],
-            'trailer' => ['required'],
-            'luatuoi' => ['required', 'max:2', 'numeric'],
-            'mota' => ['required'],
-            'hinhanh' => ['required'],
-            'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
-        ]);
+        // $this->validate($request, [
+        //     'tenphim' => ['required', 'unique:phim'],
+        //     'thoiluong' => ['required', 'max:3', 'numeric'],
+        //     'trailer' => ['required'],
+        //     'luatuoi' => ['required', 'max:2', 'numeric'],
+        //     'mota' => ['required'],
+        //     'hinhanh' => ['required'],
+        //     'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
+        // ]);
 
+
+        
+        // if($request->hasFile('hinhanh')){
+        //     $file = $request->file('hinhanh');
+        //     $extent = $file->getClientOriginalExtension();
+        //     if(($extent != 'jpg') && ($extent != 'jpeg') && ($extent != 'png')){
+        //         return redirect()->route('phim.them')->with('mes','Lỗi hình ảnh');
+        //     }
+
+        //     $name = $file->getClientOriginalName();
+        //     $hinh = Str::slug($request->tenphim);
+        //     while (file_exists())
+        // }
+        
         $orm = new Phim();
         $orm->TenPhim = $request->tenphim;
         $orm->ThoiLuong = $request->thoiluong;
@@ -44,7 +58,15 @@ class PhimController extends Controller
         $orm->MoTa = $request->mota;
         $orm->HinhAnh = $request->hinhanh;
         $orm->NamSanXuat = $request->namsanxuat;
-        $orm->save();
+        if($orm->save()){
+            foreach($request->dinhdang as $value)
+            {
+                $ddp = new DinhDang_Phim();
+                $ddp->IDPhim = Phim::latest()->first()->id;
+                $ddp->IDDinhDang = $value;
+                $ddp->save();
+            }
+        }
         return redirect()->route('phim.danhsach')->with('mes','Thêm thành công');
     }
 
