@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class PhimController extends Controller
 {
@@ -71,7 +72,7 @@ class PhimController extends Controller
         $orm->Trailer = $request->trailer;
         $orm->LuaTuoi = $request->luatuoi;
         $orm->MoTa = $request->mota;
-        if($request->hasFile('hinhanh')) $orm->HinhAnh =$request->tenphim.'.'.$request->file('hinhanh')->extension();
+        if($request->hasFile('hinhanh')) $orm->HinhAnh =Str::slug($request->tenphim, '-').'.'.$request->file('hinhanh')->extension();
         $orm->NamSanXuat = $request->namsanxuat;
         if($orm->save()){
             foreach($request->dinhdang as $value)
@@ -105,15 +106,15 @@ class PhimController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        $this->validate($request, [
-            'tenphim' => ['required', 'unique:phim'],
-            'thoiluong' => ['required', 'max:3', 'numeric'],
-            'trailer' => ['required'],
-            'luatuoi' => ['required', 'max:2', 'numeric'],
-            'mota' => ['required'],
-            'hinhanh' => ['required'],
-            'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
-        ]);
+        // $this->validate($request, [
+        //     'tenphim' => ['required', 'unique:phim'],
+        //     'thoiluong' => ['required', 'max:3', 'numeric'],
+        //     'trailer' => ['required'],
+        //     'luatuoi' => ['required', 'max:2', 'numeric'],
+        //     'mota' => ['required'],
+        //     'hinhanh' => ['required'],
+        //     'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
+        // ]);
         
         $orm = Phim::find($id);
 
@@ -123,13 +124,12 @@ class PhimController extends Controller
            
             Storage::delete('IMG/'.$orm->HinhAnh);
 
-            // Xác định tên tập tin mới
-            $extension = $request->file('hinhanh')->extension();
-            $newfilename = Str::slug($request->tenphim, '-') . '.' . $extension;
-
-            // Upload vào thư mục và trả về đường dẫn
-            $lsp = LoaiSanPham::find($request->loaisanpham_id);
-            $path = Storage::putFileAs('IMG', $request->file('hinhanh'), $newfilename);
+             // Xác định tên tập tin
+             $extension = $request->file('hinhanh')->extension();
+             $newfilename = Str::slug($request->tenphim, '-') . '.' . $extension;
+ 
+             // Upload vào thư mục và trả về đường dẫn
+             $path = Storage::putFileAs('IMG', $request->file('hinhanh'), $newfilename);
         }
 
        
@@ -138,9 +138,33 @@ class PhimController extends Controller
         $orm->Trailer = $request->trailer;
         $orm->LuaTuoi = $request->luatuoi;
         $orm->MoTa = $request->mota;
-        $orm->HinhAnh = $request->hinhanh;
+        if($request->hasFile('hinhanh')) $orm->HinhAnh =Str::slug($request->tenphim, '-').'.'.$request->file('hinhanh')->extension();
         $orm->NamSanXuat = $request->namsanxuat;
-        $orm->save();
+        if($orm->save()){
+            // foreach($request->dinhdang as $value)
+            // {
+            //     $dinhdangphim = DinhDang_Phim::where('IDPhim', $id)->get();
+                
+            //     $ddp = new DinhDang_Phim();
+            //     $ddp->IDPhim = Phim::latest()->first()->id;
+            //     $ddp->IDDinhDang = $value;
+            //     $ddp->save();
+            // }
+            
+            $lpphimold = LoaiPhim_Phim::where('IDPhim', $id)->get();
+            
+            foreach($lpphimold as $lppold){
+                DB::table('loaiphim_phim')->where('IDPhim', $lppold->IDPhim)->delete();
+            }
+
+            foreach($request->loaiphim as $lppnew){
+                $lpp = new LoaiPhim_Phim();
+                $lpp->IDPhim = Phim::find($id)->id;
+                $lpp->IDLoaiPhim = $lppnew;
+                $lpp->save();              
+            }  
+            
+        }
         return redirect()->route('phim.danhsach')->with('mes','Sửa thành công');
     }
 

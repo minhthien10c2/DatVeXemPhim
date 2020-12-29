@@ -58,13 +58,15 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-	<script src="admin_asset/vendor/jquery/jquery.min.js" defer></script>
-	<script src="admin_asset/vendor/bootstrap/js/bootstrap.min.js" defer></script>
-	<script src="admin_asset/vendor/metisMenu/metisMenu.js" defer></script>
-	<script src="admin_asset/vendor/jquery-slimscroll/jquery.slimscroll.min.js" defer></script>
-	<script src="admin_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.js" defer></script>
-	<script src="admin_asset/vendor/parsleyjs/js/parsley.min.js" defer></script>
-	<script src="admin_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js" defer></script>
-	<script src="admin_asset/scripts/common.js" defer></script>
-	<script src="admin_asset/scripts/multiselect.js" defer></script>
+	<script src="admin_asset/vendor/jquery/jquery.min.js"></script>
+    <script src="admin_asset/vendor/jquery/jquery.js"></script>
+	<script src="admin_asset/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="admin_asset/vendor/metisMenu/metisMenu.js"></script>
+	<script src="admin_asset/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="admin_asset/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+	<script src="admin_asset/vendor/parsleyjs/js/parsley.min.js"></script>
+	<script src="admin_asset/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="admin_asset/scripts/common.js"></script>
+	<script src="admin_asset/scripts/multiselect.js"></script>
+    @yield('script')
 </body>

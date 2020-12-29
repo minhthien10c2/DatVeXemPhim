@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rap;
 use App\Models\HeThongRap;
 use App\Models\ThanhPho;
+use App\Models\Phong;
 use Illuminate\Http\Request;
 
 class RapController extends Controller
@@ -67,5 +68,30 @@ class RapController extends Controller
         $orm = Rap::find($id);
         $orm->delete();
         return redirect()->route('rap.danhsach')->with('mes','Xóa thành công');
+    }
+
+    public function postAjaxHTR(Request $request){
+        $data = $request->all();
+        if ($data['action']){
+            $output = "";
+            if($data['action'] == "HeThongRap")
+            {
+                $rap = Rap::where('IDHeThongRap', $data['mahtr'])->get();
+                $output .= '<option value="-1">Chọn rạp</option>';
+                foreach($rap as $r){
+                    $output .= '<option value="'.$r->id.'">'.$r->TenRap.'</option>';
+                }
+            }
+            else
+            {
+                $phong = Phong::where('IDRap', $data['mar'])->get();
+                $output .= '<option value="-1">Chọn phòng</option>';
+                foreach($phong as $p){
+                    $output .= '<option value="'.$p->id.'">'.$p->TenPhong.'</option>';
+                }
+            }
+        }
+
+        echo $output;
     }
 }

@@ -20,6 +20,9 @@ Route::post('/dangnhap', [App\Http\Controllers\NguoiDungController::class, 'post
 Route::get('/dangky', [App\Http\Controllers\NguoiDungController::class, 'getDangKy'])->name('dangky');
 Route::post('/dangky', [App\Http\Controllers\NguoiDungController::class, 'postDangKy'])->name('dangky');
 
+Route::get('/ajaxhtr', [App\Http\Controllers\RapController::class, 'postAjaxHTR']);
+
+
 Route::group(['prefix'=>'nguoidung','middleware'=>'loginadmin'], function(){
     Route::get('/danhsach', [App\Http\Controllers\NguoiDungController::class, 'getDanhSach'])->name('nguoidung.danhsach');       
     Route::get('/sua/{id}', [App\Http\Controllers\NguoiDungController::class, 'getSua'])->name('nguoidung.sua');       

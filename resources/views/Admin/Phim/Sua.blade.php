@@ -8,7 +8,7 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="panel-content">			
-					<form action="{{route('phim.sua',['id'=>$phim->id])}}" method="post">
+					<form action="{{route('phim.sua',['id'=>$phim->id])}}" method="post" enctype="multipart/form-data">
 						@csrf
 						<div class="section-heading">
 							<h1 class="page-title">Sửa phim</h1>
@@ -21,11 +21,11 @@
 						<div class="form-group">
 							<label class="control-label">Định dạng</label>
 							<br>
-							<select id="multiselect1" name="dinhdang" class="multiselect multiselect-custom form-control" multiple="multiple">
+							<select id="multiselect1" name="dinhdang[]" class="multiselect multiselect-custom form-control" multiple="multiple">
 
-								@foreach($dinhdang as $dd)
+								@foreach($dinhdang as $key=>$dd)
 									
-									@if(($loop->index < count($dinhdangphim)) && ($dinhdangphim[$loop->index]->IDDinhDang == $dd->id))
+									@if(($key < count($dinhdangphim)) && ($dinhdangphim[$key]->IDDinhDang == $dd->id))
 										<option value="{{$dd->id}}" selected>{{$dd->TenDinhDang}}</option>
 									@else
 										<option value="{{$dd->id}}">{{$dd->TenDinhDang}}</option>
@@ -39,17 +39,24 @@
 						<div class="form-group">
 							<label class="control-label">Loại phim</label>
 							<br>
-							<select id="multiselect2" name="loaiphim" class="multiselect multiselect-custom form-control" multiple="multiple">
-								
-								@foreach($loaiphim as $lp)
+							<select id="multiselect2" name="loaiphim[]" class="multiselect multiselect-custom form-control" multiple="multiple">
+							
+							
 									
-									@if(($loop->index < count($loaiphimphim)) && ($loaiphimphim[$loop->index]->IDLoaiPhim == $lp->id))
-										<option value="{{$lp->id}}" selected>{{$lp->TenLoaiPhim}}</option>
+										
+							
+
+							@foreach($loaiphim as $key=>$lp)
+									
+									@if($key < 2 && $loaiphimphim[0]->IDLoaiPhim == $lp->id)
+										<option value="{{$dd->id}}" selected>{{$lp->TenLoaiPhim}}</option>
 									@else
-										<option value="{{$lp->id}}">{{$lp->TenLoaiPhim}}</option>
+										<option value="{{$dd->id}}">{{$lp->TenLoaiPhim}}</option>
 									@endif
 									
 								@endforeach
+										
+
 							
 							</select>
 						</div>
@@ -76,8 +83,11 @@
 
 						<div class="form-group">
 							<label for="exampleInputFile" class="control-label">Hình ảnh</label>
-							<input type="file" name="hinhanh" value="{{$phim->HinhAnh}}" id="exampleInputFile">
-							<img style="margin-top:10px;width: 100px;" src="{{ env('APP_URL') . '/storage/app/IMG/' . $phim->HinhAnh }}" />
+							<input type="file" name="hinhanh" id="exampleInputFile">
+							@if(!empty($phim->HinhAnh))
+								<img style="display:block;margin-top:10px;width: 100px;" src="{{ env('APP_URL') . '/storage/app/IMG/' . $phim->HinhAnh }}" />
+								<span class="d-block small text-danger">Bỏ trống nếu muốn giữ nguyên ảnh cũ</span>
+							@endif
 						</div>
 
 						<div class="form-group">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuatChieu;
+use App\Models\Phim;
+use App\Models\HeThongRap;
 use Illuminate\Http\Request;
 
 class SuatChieuController extends Controller
@@ -15,7 +17,9 @@ class SuatChieuController extends Controller
 
     public function getThem()
     {
-        return view('Admin.SuatChieu.Them');
+        $phim = Phim::all();
+        $hethongrap = HeThongRap::all();
+        return view('Admin.SuatChieu.Them', compact('phim', 'hethongrap'));
     }
 
     public function postThem(Request $request)
