@@ -27,12 +27,12 @@
 							</caption>
 							<thead>							
 								<tr>
-									<th scope="col">STT</th>	
+									<th scope="col">STT</th>
+									<th scope="col">Phim</th>	
+									<th scope="col">Định dạng</th>
 									<th scope="col">Tên hệ thống rạp</th>	
 									<th scope="col">Tên rạp</th>
-									<th scope="col">Tên phòng</th>
-									<th scope="col">Định dạng</th>
-									<th scope="col">Phim</th>						
+									<th scope="col">Tên phòng</th>																							
 									<th scope="col">Ngày chiếu</th>
 									<th scope="col">Giờ chiếu</th>
 									<th scope="col">Giá vé</th>
@@ -45,11 +45,11 @@
 									@php $stt++; @endphp
 									<tr class="table-active">
 										<td>{{$stt}}</td>
-										<td>{{$sc->Phong->Rap->HeThongRap->TenHeThongRap}}</td>
-										<td>{{$sc->Phong->Rap->TenRap}}</td>
-										<td>{{$sc->Phong->TenPhong}}</td>
 										<td>{{$sc->Phong->DinhDang->TenDinhDang}}</td>
 										<td>{{$sc->Phim->TenPhim}}</td>
+										<td>{{$sc->Phong->Rap->HeThongRap->TenHeThongRap}}</td>
+										<td>{{$sc->Phong->Rap->TenRap}}</td>
+										<td>{{$sc->Phong->TenPhong}}</td>									
 										<td>{{$sc->NgayChieu}}</td>
 										<td>{{$sc->GioBatDau}}</td>
 										<td>{{$sc->GiaVe}}</td>									

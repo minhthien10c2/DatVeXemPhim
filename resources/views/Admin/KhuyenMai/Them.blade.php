@@ -10,7 +10,8 @@
             <div class="col-md-6">
                 <div class="panel-content">
                             
-                    <form action="AddPhimServlet" method="post">
+                    <form action="{{route('khuyenmai.them')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="section-heading">
                             <h1 class="page-title">Thêm khuyến mãi</h1>
                         </div>

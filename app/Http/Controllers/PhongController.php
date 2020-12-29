@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Phong;
 use App\Models\Rap;
 use App\Models\DinhDang;
+use App\Models\HeThongRap;
 use Illuminate\Http\Request;
 
 class PhongController extends Controller
@@ -19,17 +20,18 @@ class PhongController extends Controller
     {
         $dinhdang = DinhDang::all();
         $rap = Rap::all();
-        return view('Admin.Phong.Them', compact('dinhdang', 'rap'));
+        $hethongrap = HeThongRap::all();
+        return view('Admin.Phong.Them', compact('dinhdang', 'rap','hethongrap'));
     }
 
     public function postThem(Request $request)
     {
-        $this->validate($request, [
-            'rap' => ['required'],
-            'tenphong' => ['required'],
-            'soghetoida' => ['required', 'numeric', 'max:60'],
-            'iddinhdang' => ['required'],
-        ]);
+        // $this->validate($request, [
+        //     'rap' => ['required'],
+        //     'tenphong' => ['required'],
+        //     'soghetoida' => ['required', 'numeric', 'max:60'],
+        //     'iddinhdang' => ['required'],
+        // ]);
 
         $orm = new Phong();
         $orm->IDRap = $request->rap;
@@ -45,17 +47,18 @@ class PhongController extends Controller
         $phong = Phong::find($id);
         $dinhdang = DinhDang::all();
         $rap = Rap::all();
-        return view('Admin.Phong.Sua', compact('phong', 'dinhdang', 'rap'));
+        $hethongrap = HeThongRap::all();
+        return view('Admin.Phong.Sua', compact('phong', 'dinhdang', 'rap', 'hethongrap'));
     }
 
     public function postSua(Request $request, $id)
     {
-        $this->validate($request, [
-            'rap' => ['required'],
-            'tenphong' => ['required'],
-            'soghetoida' => ['required', 'numeric', 'max:60'],
-            'iddinhdang' => ['required'],
-        ]);
+        // $this->validate($request, [
+        //     'rap' => ['required'],
+        //     'tenphong' => ['required'],
+        //     'soghetoida' => ['required', 'numeric', 'max:60'],
+        //     'iddinhdang' => ['required'],
+        // ]);
 
         $orm = Phong::find($id);
         $orm->IDRap = $request->rap;
@@ -71,5 +74,17 @@ class PhongController extends Controller
         $orm = Phong::find($id);
         $orm->delete();
         return redirect()->route('phong.danhsach')->with('mes','Xóa thành công');
+    }
+
+    public function getAjaxGetPhong(Request $request){
+        $data = $request->all();
+        if ($data['mar']){
+            $output = "";
+            $phong = Phong::where('IDRap', $data['mar'])->get();
+            foreach($phong as $p){
+                $output .= '<option value="'.$p->id.'">'.$p->TenPhong.'</option>';
+            }
+        }               
+        echo $output;
     }
 }

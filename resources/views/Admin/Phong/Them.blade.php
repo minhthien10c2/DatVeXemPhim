@@ -13,12 +13,20 @@
                         <div class="section-heading">
                             <h1 class="page-title">Thêm phòng</h1>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Chọn hệ thống rạp</label>
+                            <select id="HeThongRap" class="form-control">
+                                @foreach($hethongrap as $htr)
+                                    <option value="{{$htr->id}}">{{$htr->TenHeThongRap}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label class="control-label">Chọn rạp</label>
-                            <select name="rap" class="form-control">
-                                @foreach($rap as $r)
-                                    <option value="{{$r->id}}">{{$r->TenRap}}</option>
-                                @endforeach
+                            <select name="rap" id="Rap" class="form-control">
+                                <option>Chọn rạp</option>
                             </select>
                         </div>
 
@@ -49,4 +57,29 @@
     </div>
 </div>
 <!-- END MAIN CONTENT -->
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function (){
+
+        $('#HeThongRap').on('change',function () {
+            $('#Rap').find('option').remove();
+            $('#Rap').append('<option>Chọn rạp</option>'); 	
+
+            var mahtr = $(this).val();           
+            var token = $('input[name="_token"]').val();
+ 
+           $.ajax({
+                url: ('ajaxgetrap'),
+                method: 'get',
+                data: {mahtr:mahtr, token:token},
+                success: function(data){
+                    $('#Rap').append(data);
+                }
+           });
+        });      
+    });
+</script>
+
 @endsection

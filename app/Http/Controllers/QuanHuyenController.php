@@ -61,4 +61,16 @@ class QuanHuyenController extends Controller
         $orm->delete();
         return redirect()->route('quanhuyen.danhsach')->with('mes','Xóa thành công');
     }
+
+    public function getAjaxGetQuanHuyen(Request $request){
+        $data = $request->all();
+        if ($data['matp']){
+            $output = "";
+            $quanhuyen = QuanHuyen::where('IDThanhPho', $data['matp'])->get();
+            foreach($quanhuyen as $qh){
+                $output .= '<option value="'.$qh->id.'">'.$qh->TenQuanHuyen.'</option>';
+            }
+        }               
+        echo $output;
+    }
 }

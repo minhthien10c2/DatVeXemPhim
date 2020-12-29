@@ -13,16 +13,25 @@
                         <div class="section-heading">
                             <h1 class="page-title">Sửa phòng</h1>
                         </div>
+
                         <div class="form-group">
-                            <label class="control-label">Chọn rạp</label>
-                            <select name="rap" class="form-control">
-                                @foreach($rap as $r)
-                                    @if($phong->IDRap == $r->id)
-                                        <option value="{{$r->id}}" selected>{{$r->TenRap}}</option>
+                            <label class="control-label">Chọn hệ thống rạp</label>
+                            <select id="HeThongRap" class="form-control">
+                                <option>Chọn hệ thống rạp</option>
+                                @foreach($hethongrap as $htr)
+                                    @if($htr->id == $phong->Rap->HeThongRap->id)
+                                        <option value="{{$htr->id}}" selected>{{$htr->TenHeThongRap}}</option>
                                     @else
-                                        <option value="{{$r->id}}">{{$r->TenRap}}</option>
+                                        <option value="{{$htr->id}}">{{$htr->TenHeThongRap}}</option>
                                     @endif
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Chọn rạp</label>
+                            <select name="rap" id="Rap" class="form-control">
+                                    <option value="{{$phong->IDRap}}" selected>{{$phong->Rap->TenRap}}</option>
                             </select>
                         </div>
 
@@ -57,4 +66,29 @@
     </div>
 </div>
 <!-- END MAIN CONTENT -->
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function (){
+
+        $('#HeThongRap').on('change',function () {
+            $('#Rap').find('option').remove();
+            $('#Rap').append('<option>Chọn rạp</option>'); 	
+
+            var mahtr = $(this).val();           
+            var token = $('input[name="_token"]').val();
+ 
+           $.ajax({
+                url: ('ajaxgetrap'),
+                method: 'get',
+                data: {mahtr:mahtr, token:token},
+                success: function(data){
+                    $('#Rap').append(data);
+                }
+           });
+        });      
+    });
+</script>
+
 @endsection

@@ -42,19 +42,6 @@ class PhimController extends Controller
 
 
         
-        // if($request->hasFile('hinhanh')){
-        //     $file = $request->file('hinhanh');
-        //     $extent = $file->getClientOriginalExtension();
-        //     if(($extent != 'jpg') && ($extent != 'jpeg') && ($extent != 'png')){
-        //         return redirect()->route('phim.them')->with('mes','Lỗi hình ảnh');
-        //     }
-
-        //     $name = $file->getClientOriginalName();
-        //     $hinh = Str::slug($request->tenphim);
-        //     while (file_exists())
-        // }
-
-        
         if($request->hasFile('hinhanh'))
         {
             // Xác định tên tập tin
@@ -141,15 +128,18 @@ class PhimController extends Controller
         if($request->hasFile('hinhanh')) $orm->HinhAnh =Str::slug($request->tenphim, '-').'.'.$request->file('hinhanh')->extension();
         $orm->NamSanXuat = $request->namsanxuat;
         if($orm->save()){
-            // foreach($request->dinhdang as $value)
-            // {
-            //     $dinhdangphim = DinhDang_Phim::where('IDPhim', $id)->get();
-                
-            //     $ddp = new DinhDang_Phim();
-            //     $ddp->IDPhim = Phim::latest()->first()->id;
-            //     $ddp->IDDinhDang = $value;
-            //     $ddp->save();
-            // }
+            $ddphimold = DinhDang_Phim::where('IDPhim', $id)->get();
+            
+            foreach($ddphimold as $ddpold){
+                DB::table('dinhdang_phim')->where('IDPhim', $ddpold->IDPhim)->delete();
+            }
+
+            foreach($request->dinhdang as $ddpnew){
+                $ddp = new DinhDang_Phim();
+                $ddp->IDPhim = Phim::find($id)->id;
+                $ddp->IDDinhDang = $ddpnew;
+                $ddp->save();              
+            }
             
             $lpphimold = LoaiPhim_Phim::where('IDPhim', $id)->get();
             

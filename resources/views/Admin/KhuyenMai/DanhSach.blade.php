@@ -38,9 +38,9 @@
 							@foreach($khuyenmai as $km)
 								@php $stt++; @endphp
 								<tr class="table-active">
-									<tr>{{$stt}}</tr>
-									<tr>{{$km->TieuDe}}</tr>
-									<td><img style="width:200px"; alt="" src="{{$km->HinhAnh}}"></td>
+									<td>{{$stt}}</td>
+									<td>{{$km->TieuDe}}</td>
+									<td><img style="width:200px"; alt="" src="{{ env('APP_URL') . '/storage/app/IMG/' . $km->HinhAnh }}"></td>
 									<td>{{$km->ChiTiet}}</td>
 									<td  class="text-right"><a href="{{route ('khuyenmai.sua',['id'=>$km->id])}}">Sửa</a></td>
 									<td  class="text-left"><a onclick="return confirm('Bạn có muốn xóa?');" href="{{route ('khuyenmai.xoa',['id'=>$km->id])}}">Xóa</a></td>

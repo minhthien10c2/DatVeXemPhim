@@ -49,11 +49,11 @@ class RapController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        $this->validate($request, [
-            'hethongrap' => ['required'],
-            'quanhuyen' => ['required'],
-            'tenrap' => ['required', 'unique:rap'],
-        ]);
+        // $this->validate($request, [
+        //     'hethongrap' => ['required'],
+        //     'quanhuyen' => ['required'],
+        //     'tenrap' => ['required', 'unique:rap'],
+        // ]);
         
         $orm = Rap::find($id);
         $orm->IDHeThongRap = $request->hethongrap;
@@ -70,28 +70,15 @@ class RapController extends Controller
         return redirect()->route('rap.danhsach')->with('mes','Xóa thành công');
     }
 
-    public function postAjaxHTR(Request $request){
+    public function getAjaxGetRap(Request $request){
         $data = $request->all();
-        if ($data['action']){
+        if ($data['mahtr']){
             $output = "";
-            if($data['action'] == "HeThongRap")
-            {
-                $rap = Rap::where('IDHeThongRap', $data['mahtr'])->get();
-                $output .= '<option value="-1">Chọn rạp</option>';
-                foreach($rap as $r){
-                    $output .= '<option value="'.$r->id.'">'.$r->TenRap.'</option>';
-                }
+            $rap = Rap::where('IDHeThongRap', $data['mahtr'])->get();
+            foreach($rap as $r){
+                $output .= '<option value="'.$r->id.'">'.$r->TenRap.'</option>';
             }
-            else
-            {
-                $phong = Phong::where('IDRap', $data['mar'])->get();
-                $output .= '<option value="-1">Chọn phòng</option>';
-                foreach($phong as $p){
-                    $output .= '<option value="'.$p->id.'">'.$p->TenPhong.'</option>';
-                }
-            }
-        }
-
+        }               
         echo $output;
     }
 }

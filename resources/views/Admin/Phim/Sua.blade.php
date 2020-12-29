@@ -40,24 +40,17 @@
 							<label class="control-label">Loại phim</label>
 							<br>
 							<select id="multiselect2" name="loaiphim[]" class="multiselect multiselect-custom form-control" multiple="multiple">
-							
-							
-									
+																																					
+								@foreach($loaiphim as $key=>$lp)
 										
-							
-
-							@foreach($loaiphim as $key=>$lp)
-									
-									@if($key < 2 && $loaiphimphim[0]->IDLoaiPhim == $lp->id)
-										<option value="{{$dd->id}}" selected>{{$lp->TenLoaiPhim}}</option>
-									@else
-										<option value="{{$dd->id}}">{{$lp->TenLoaiPhim}}</option>
-									@endif
-									
+										@if(($key < count($loaiphimphim)) && ($loaiphimphim[$key]->IDLoaiPhim == $lp->id))
+											<option value="{{$lp->id}}" selected>{{$lp->TenLoaiPhim}}</option>
+										@else
+											<option value="{{$lp->id}}">{{$lp->TenLoaiPhim}}</option>
+										@endif
+										
 								@endforeach
-										
-
-							
+																	
 							</select>
 						</div>
 

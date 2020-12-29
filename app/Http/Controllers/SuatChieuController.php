@@ -6,6 +6,7 @@ use App\Models\SuatChieu;
 use App\Models\Phim;
 use App\Models\HeThongRap;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class SuatChieuController extends Controller
 {
@@ -24,18 +25,18 @@ class SuatChieuController extends Controller
 
     public function postThem(Request $request)
     {
-        $this->validate($request, [
-            'idphim' => ['required'],
-            'idphong' => ['required'],
-            'ngaychieu' => ['required'],
-            'giobatdau' => ['required'],
-            'giave' => ['required'],
-        ]);
+        // $this->validate($request, [
+        //     'idphim' => ['required'],
+        //     'idphong' => ['required'],
+        //     'ngaychieu' => ['required'],
+        //     'giobatdau' => ['required'],
+        //     'giave' => ['required'],
+        // ]);
 
         $orm = new SuatChieu();
-        $orm->IDPhim = $request->idphim;
-        $orm->IDPhong = $request->idphong;
-        $orm->NgayChieu = $request->ngaychieu;
+        $orm->IDPhim = $request->phim;
+        $orm->IDPhong = $request->phong;
+        $orm->NgayChieu = Carbon::parse($request->ngaychieu)->format('yy/m/d');
         $orm->GioBatDau = $request->giobatdau;
         $orm->GiaVe = $request->giave;
         $orm->save();
@@ -45,24 +46,25 @@ class SuatChieuController extends Controller
     public function getSua($id)
     {
         $suatchieu = SuatChieu::find($id);
-        return view('Admin.SuatChieu.Sua', compact('suatchieu'));
+        $hethongrap = HeThongRap::all();
+        return view('Admin.SuatChieu.Sua', compact('suatchieu','hethongrap'));
     }
 
     public function postSua(Request $request, $id)
     {
-        $this->validate($request, [
-            'idphim' => ['required'],
-            'idphong' => ['required'],
-            'ngaychieu' => ['required'],
-            'giobatdau' => ['required'],
-            'giave' => ['required'],
-        ]);
+        // $this->validate($request, [
+        //     'idphim' => ['required'],
+        //     'idphong' => ['required'],
+        //     'ngaychieu' => ['required'],
+        //     'giobatdau' => ['required'],
+        //     'giave' => ['required'],
+        // ]);
         
         $orm = SuatChieu::find($id);
-        $orm->IDPhim = $request->idphim;
-        $orm->IDPhong = $request->idphong;
-        $orm->NgayChieu = $request->ngaychieu;
-        $orm->NgayBatDau = $request->ngaybatdau;
+        $orm->IDPhim = $request->phim;
+        $orm->IDPhong = $request->phong;
+        $orm->NgayChieu = Carbon::parse($request->ngaychieu)->format('yy/m/d');
+        $orm->GioBatDau = $request->giobatdau;
         $orm->GiaVe = $request->giave;
         $orm->save();
         return redirect()->route('suatchieu.danhsach')->with('mes','Sửa thành công');
