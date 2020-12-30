@@ -17,22 +17,31 @@
                         </div>
                         <div class="form-group">
                             <label>Tiêu đề</label>
-                            <input type="text" name="tieude" value="{{$khuyenmai->TieuDe}}" class="form-control" required>
+                            <input type="text" name="tieude" value="{{$khuyenmai->TieuDe}}" class="form-control @error('tieude') is-invalid @enderror" required>
+                            @error('tieude')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                                                                         
                         <div class="form-group">
                             <label for="exampleInputFile" class="control-label">Hình ảnh</label>
-                            <input type="file" name="hinhanh" id="exampleInputFile">
+                            <input type="file" name="hinhanh" id="exampleInputFile" class="@error('hinhanh') is-invalid @enderror">
                             @if(!empty($khuyenmai->HinhAnh))
 								<img style="display:block;margin-top:10px;width: 100px;" src="{{ env('APP_URL') . '/storage/app/IMG/' . $khuyenmai->HinhAnh }}" />
 								<span class="d-block small text-danger">Bỏ trống nếu muốn giữ nguyên ảnh cũ</span>
 							@endif
+                            @error('hinhanh')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <textarea class="form-control" name="chitiet" rows="5" cols="30" required>{{$khuyenmai->ChiTiet}}</textarea>
-                        </div>
+                            <textarea class="form-control @error('chitiet') is-invalid @enderror" name="chitiet" rows="5" cols="30" required>{{$khuyenmai->ChiTiet}}</textarea>
+                            @error('chitiet')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
+                       </div>
                 
                         <button type="submit" class="btn btn-primary">Sửa khuyến mãi</button>
                     </form>

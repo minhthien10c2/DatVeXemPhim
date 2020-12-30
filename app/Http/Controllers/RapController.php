@@ -49,11 +49,11 @@ class RapController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'hethongrap' => ['required'],
-        //     'quanhuyen' => ['required'],
-        //     'tenrap' => ['required', 'unique:rap'],
-        // ]);
+        $this->validate($request, [
+            'hethongrap' => ['required'],
+            'quanhuyen' => ['required'],
+            'tenrap' => ['required', 'unique:rap,tenrap,IDHeThongRap,'.$id],
+        ]);
         
         $orm = Rap::find($id);
         $orm->IDHeThongRap = $request->hethongrap;

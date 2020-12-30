@@ -15,7 +15,10 @@
 								</div>							
 								<div class="form-group">
 									<label>Tên hệ thống rạp</label>
-									<input type="text" name="tenhethongrap" class="form-control" required>
+									<input type="text" name="tenhethongrap" class="form-control @error('tenhethongrap') is-invalid @enderror" value="{{ old('tenhethongrap')}}">
+									@error('tenhethongrap')
+										<div class="text-danger"><strong>{{ $message }}</strong></div>
+									@enderror
 								</div>
 								<button type="submit" class="btn btn-primary">Thêm hệ thống rạp</button>
 							</form>

@@ -26,12 +26,12 @@ class PhongController extends Controller
 
     public function postThem(Request $request)
     {
-        // $this->validate($request, [
-        //     'rap' => ['required'],
-        //     'tenphong' => ['required'],
-        //     'soghetoida' => ['required', 'numeric', 'max:60'],
-        //     'iddinhdang' => ['required'],
-        // ]);
+        $this->validate($request, [
+            'rap' => ['required'],
+            'tenphong' => ['required','unique:phong,tenphong,'.$request->rap],
+            'soghetoida' => ['required', 'numeric', 'max:60'],
+            'iddinhdang' => ['required'],
+        ]);
 
         $orm = new Phong();
         $orm->IDRap = $request->rap;
@@ -53,12 +53,12 @@ class PhongController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'rap' => ['required'],
-        //     'tenphong' => ['required'],
-        //     'soghetoida' => ['required', 'numeric', 'max:60'],
-        //     'iddinhdang' => ['required'],
-        // ]);
+        $this->validate($request, [
+            'rap' => ['required'],
+            'tenphong' => ['required','unique:phong,tenphong,'.$id],
+            'soghetoida' => ['required', 'numeric', 'max:60'],
+            'iddinhdang' => ['required'],
+        ]);
 
         $orm = Phong::find($id);
         $orm->IDRap = $request->rap;

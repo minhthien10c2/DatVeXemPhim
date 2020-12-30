@@ -38,6 +38,10 @@ class ThanhPhoController extends Controller
 
     public function postSua(Request $request, $id)
     {
+        $this->validate($request, [
+            'tenthanhpho' => ['required','unique:thanhpho,tenthanhpho,'.$id],
+        ]);
+
         $orm = ThanhPho::find($id);
         $orm->TenThanhPho = $request->tenthanhpho;
         $orm->save();

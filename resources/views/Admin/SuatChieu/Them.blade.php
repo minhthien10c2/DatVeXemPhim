@@ -16,11 +16,14 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Chọn phim</label>
-                            <select class="form-control" name="phim">
+                            <select value="{{ old('phim') }}" class="form-control @error('phim') is-invalid @enderror" name="phim">
                                 @foreach($phim as $p)
                                     <option value="{{$p->id}}">{{$p->TenPhim}}</option>
                                 @endforeach
                             </select>
+                            @error('phim')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
@@ -44,27 +47,38 @@
                             
                         <div class="form-group">
                             <label class="control-label">Chọn phòng</label>
-                            <select class="form-control chon" name="phong" id="Phong">
+                            <select value="{{ old('phong') }}" class="form-control @error('phong') is-invalid @enderror" name="phong" id="Phong">
                                 
                                 <option>Chọn phòng</option>
                                 
                             </select>
+                            @error('phong')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
                             <label>Chọn ngày chiếu</label>
-                            <input data-provide="datepicker" name="ngaychieu" data-date-autoclose="true" class="form-control" data-date-format="mm/dd/yyyy">
-                            
+                            <input data-provide="datepicker" name="ngaychieu" data-date-autoclose="true" value="{{ old('ngaychieu') }}" class="form-control @error('ngaychieu') is-invalid @enderror" data-date-format="mm/dd/yyyy">
+                            @error('ngaychieu')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
                             <label>Giờ bắt đầu</label>
-                            <input type="text" class="form-control" name="giobatdau" required>
+                            <input type="text" value="{{ old('giobatdau') }}" class="form-control @error('giobatdau') is-invalid @enderror" name="giobatdau">
+                            @error('giobatdau')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label>Giá vé</label>
-                            <input type="text" class="form-control" name="giave" required>
+                            <input type="text" value="{{ old('giave') }}" class="form-control @error('giave') is-invalid @enderror" name="giave">
+                            @error('giave')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm suất chiếu</button>
                     </form>

@@ -17,17 +17,26 @@
                         </div>
                         <div class="form-group">
                             <label>Tiêu đề</label>
-                            <input type="text" name="tieude" class="form-control" required>
+                            <input type="text" name="tieude" class="form-control @error('tieude') is-invalid @enderror" value="{{ old('tieude')}}">
+                            @error('tieude')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                                                                         
                         <div class="form-group">
                             <label for="exampleInputFile" class="control-label">Hình ảnh</label>
-                            <input type="file" name="hinhanh" id="exampleInputFile">
+                            <input type="file" name="hinhanh" id="exampleInputFile" class="@error('hinhanh') is-invalid @enderror" value="{{ old('hinhanh')}}">
+                            @error('hinhanh')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <textarea class="form-control" name="chitiet" rows="5" cols="30" required></textarea>
+                            <textarea class="form-control @error('chitiet') is-invalid @enderror" value="{{ old('chitiet')}}" name="chitiet" rows="5" cols="30"></textarea>
+                            @error('chitiet')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                 
                         <button type="submit" class="btn btn-primary">Thêm khuyến mãi</button>

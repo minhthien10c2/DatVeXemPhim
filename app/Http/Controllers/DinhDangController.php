@@ -40,7 +40,7 @@ class DinhDangController extends Controller
     public function postSua(Request $request, $id)
     {
         $this->validate($request, [
-            'tendinhdang' => ['required', 'unique:dinhdang'],
+            'tendinhdang' => ['required', 'unique:dinhdang,tendinhdang,'.$id],
         ]);
         
         $orm = DinhDang::find($id);

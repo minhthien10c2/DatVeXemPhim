@@ -30,15 +30,15 @@ class PhimController extends Controller
 
     public function postThem(Request $request)
     {
-        // $this->validate($request, [
-        //     'tenphim' => ['required', 'unique:phim'],
-        //     'thoiluong' => ['required', 'max:3', 'numeric'],
-        //     'trailer' => ['required'],
-        //     'luatuoi' => ['required', 'max:2', 'numeric'],
-        //     'mota' => ['required'],
-        //     'hinhanh' => ['required'],
-        //     'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
-        // ]);
+        $this->validate($request, [
+            'tenphim' => ['required', 'unique:phim'],
+            'thoiluong' => ['required', 'numeric'],
+            'trailer' => ['required'],
+            'luatuoi' => ['required', 'numeric'],
+            'mota' => ['required'],
+            'hinhanh' => ['required','image', 'max: 2048'],
+            'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
+        ]);
 
 
         
@@ -93,15 +93,15 @@ class PhimController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'tenphim' => ['required', 'unique:phim'],
-        //     'thoiluong' => ['required', 'max:3', 'numeric'],
-        //     'trailer' => ['required'],
-        //     'luatuoi' => ['required', 'max:2', 'numeric'],
-        //     'mota' => ['required'],
-        //     'hinhanh' => ['required'],
-        //     'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
-        // ]);
+        $this->validate($request, [
+            'tenphim' => ['required', 'unique:phim,tenphim,'.$id],
+            'thoiluong' => ['required', 'numeric'],
+            'trailer' => ['required'],
+            'luatuoi' => ['required', 'numeric'],
+            'mota' => ['required'],
+            'hinhanh' => ['image', 'max: 2048'],
+            'namsanxuat' => ['required','between:1990, 2021', 'numeric'],
+        ]);
         
         $orm = Phim::find($id);
 

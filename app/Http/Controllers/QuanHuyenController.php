@@ -45,7 +45,7 @@ class QuanHuyenController extends Controller
     {
         $this->validate($request, [
             'thanhpho' => ['required'],
-            'tenquanhuyen' => ['required', 'unique:quanhuyen'],
+            'tenquanhuyen' => ['required', 'unique:quanhuyen,tenquanhuyen,'.$id],
         ]);
 
         $orm = QuanHuyen::find($id);

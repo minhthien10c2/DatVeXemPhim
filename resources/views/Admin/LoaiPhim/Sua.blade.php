@@ -16,7 +16,10 @@
                         </div>							
                         <div class="form-group">
                             <label>Tên loại phim</label>
-                            <input type="text" name="tenloaiphim" value="{{$loaiphim->TenLoaiPhim}}" class="form-control" required>
+                            <input type="text" name="tenloaiphim" value="{{$loaiphim->TenLoaiPhim}}" class="form-control @error('tenloaiphim') is-invalid @enderror">
+                            @error('tenloaiphim')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Sửa loại phim</button>
                     </form>

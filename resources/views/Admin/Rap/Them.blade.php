@@ -15,16 +15,19 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Chọn hệ thống rạp</label>
-                            <select class="form-control" name="hethongrap">
+                            <select class="form-control @error('hethongrap') is-invalid @enderror" value="{{ old('hethongrap') }}" name="hethongrap">
                                 @foreach($hethongrap as $htr)
                                     <option value="{{$htr->id}}">{{$htr->TenHeThongRap}}</option>
                                 @endforeach
                             </select>
+                            @error('hethongrap')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror 
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Chọn thành phố</label>
-                            <select class="form-control" name="thanhpho" id="ThanhPho">
+                            <select class="form-control" id="ThanhPho">
                                 <option>Chọn thành phố</option>
                                 @foreach($thanhpho as $tp)
                                     <option value="{{$tp->id}}">{{$tp->TenThanhPho}}</option>
@@ -34,16 +37,22 @@
                         
                         <div class="form-group">
                             <label class="control-label">Chọn quận huyện</label>
-                            <select class="form-control" name="quanhuyen" id="QuanHuyen">
+                            <select class="form-control @error('quanhuyen') is-invalid @enderror" value="{{ old('quanhuyen') }}" name="quanhuyen" id="QuanHuyen">
                                 
                                 <option>Chọn quận huyện</option>
                                 
                             </select>
+                            @error('quanhuyen')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror 
                         </div>														
 
                         <div class="form-group">
                             <label>Tên rạp</label>
-                            <input type="text" name="tenrap" class="form-control" required>
+                            <input type="text" name="tenrap" value="{{ old('tenrap') }}" class="form-control @error('tenrap') is-invalid @enderror">
+                            @error('tenrap')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm rạp</button>
                     </form>

@@ -24,7 +24,7 @@ class KhuyenMaiController extends Controller
     {
         $this->validate($request, [
             'tieude' => ['required', 'unique:khuyenmai'],
-            'hinhanh' => ['required'],
+            'hinhanh' => ['required', 'image', 'max:2048'],
             'chitiet' => ['required'],
         ]);
 
@@ -54,11 +54,11 @@ class KhuyenMaiController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'tieude' => ['required', 'unique:khuyenmai'],
-        //     'hinhanh' => ['required'],
-        //     'chitiet' => ['required'],
-        // ]);
+        $this->validate($request, [
+            'tieude' => ['required', 'unique:khuyenmai,tieude,'.$id],
+            'hinhanh' => ['image', 'max:2048'],
+            'chitiet' => ['required'],
+        ]);
 
         $orm = KhuyenMai::find($id);
 

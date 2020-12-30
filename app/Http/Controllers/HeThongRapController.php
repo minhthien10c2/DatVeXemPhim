@@ -39,7 +39,7 @@ class HeThongRapController extends Controller
     public function postSua(Request $request, $id)
     {
         $this->validate($request, [
-            'tenhethongrap' => ['required', 'unique:hethongrap'],
+            'tenhethongrap' => ['required', 'unique:hethongrap,tenhethongrap,'.$id],
         ]);
         
         $orm = HeThongRap::find($id);

@@ -39,7 +39,7 @@ class LoaiPhimController extends Controller
     public function postSua(Request $request, $id)
     {
         $this->validate($request, [
-            'tenloaiphim' => ['required', 'unique:loaiphim'],
+            'tenloaiphim' => ['required', 'unique:loaiphim,tenloaiphim,'.$id],
         ]);
 
         $orm = LoaiPhim::find($id);

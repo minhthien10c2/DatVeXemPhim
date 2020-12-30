@@ -16,7 +16,10 @@
                         </div>							
                         <div class="form-group" >
                             <label>Tên thành phố</label>
-                            <input type="text" name="tenthanhpho" value="{{$thanhpho->TenThanhPho}}" class="form-control" required>
+                            <input type="text" name="tenthanhpho" value="{{$thanhpho->TenThanhPho}}" class="form-control @error('tenthanhpho') is-invalid @enderror">
+                            @error('tenthanhpho')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Sửa thành phố</button>
                     </form>

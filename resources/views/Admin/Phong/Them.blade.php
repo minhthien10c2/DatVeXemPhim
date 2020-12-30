@@ -17,36 +17,49 @@
                         <div class="form-group">
                             <label class="control-label">Chọn hệ thống rạp</label>
                             <select id="HeThongRap" class="form-control">
+                                <option>Chọn hệ thống rạp</option>
                                 @foreach($hethongrap as $htr)
                                     <option value="{{$htr->id}}">{{$htr->TenHeThongRap}}</option>
                                 @endforeach
-                            </select>
+                            </select>        
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Chọn rạp</label>
-                            <select name="rap" id="Rap" class="form-control">
+                            <select name="rap" value="{{ old('rap') }}" id="Rap" class="form-control @error('rap') is-invalid @enderror">
                                 <option>Chọn rạp</option>
                             </select>
+                            @error('rap')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror   
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Chọn định dạng</label>
-                            <select name="dinhdang" class="form-control">
+                            <select name="dinhdang" value="{{ old('dinhdang') }}" class="form-control @error('dinhdang') is-invalid @enderror">
                                 @foreach($dinhdang as $dd)
                                     <option value="{{$dd->id}}">{{$dd->TenDinhDang}}</option>
                                 @endforeach
                             </select>
+                            @error('dinhdang')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror   
                         </div>														
 
                         <div class="form-group">
                             <label>Tên phòng</label>
-                            <input type="text" name="tenphong" class="form-control" required>
+                            <input type="text" value="{{ old('tenphong') }}" name="tenphong" class="form-control @error('tenphong') is-invalid @enderror">
+                            @error('tenphong')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror   
                         </div>
 
                         <div class="form-group">
                             <label>Số ghế tối đa</label>
-                            <input type="text" name="soghetoida" class="form-control" required>
+                            <input type="text" value="{{ old('soghetoida') }}" name="soghetoida" class="form-control @error('soghetoida') is-invalid @enderror">
+                            @error('soghetoida')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror   
                         </div>
                         <button type="submit" class="btn btn-primary">Thêm phòng</button>
                     </form>

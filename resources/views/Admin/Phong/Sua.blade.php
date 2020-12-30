@@ -16,7 +16,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Chọn hệ thống rạp</label>
-                            <select id="HeThongRap" class="form-control">
+                            <select id="HeThongRap" class="form-control @error('tenphong') is-invalid @enderror">
                                 <option>Chọn hệ thống rạp</option>
                                 @foreach($hethongrap as $htr)
                                     @if($htr->id == $phong->Rap->HeThongRap->id)
@@ -30,14 +30,17 @@
 
                         <div class="form-group">
                             <label class="control-label">Chọn rạp</label>
-                            <select name="rap" id="Rap" class="form-control">
+                            <select name="rap" id="Rap" class="form-control @error('rap') is-invalid @enderror">
                                     <option value="{{$phong->IDRap}}" selected>{{$phong->Rap->TenRap}}</option>
                             </select>
+                            @error('rap')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror  
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Chọn định dạng</label>
-                            <select name="dinhdang" class="form-control">
+                            <select name="dinhdang" class="form-control @error('dinhdang') is-invalid @enderror">
                                 @foreach($dinhdang as $dd)
                                     @if($phong->IDDinhDang == $dd->id)
                                         <option value="{{$dd->id}}" selected>{{$dd->TenDinhDang}}</option>
@@ -46,16 +49,25 @@
                                     @endif
                                 @endforeach
                             </select>
+                            @error('dinhdang')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror  
                         </div>														
 
                         <div class="form-group">
                             <label>Tên phòng</label>
-                            <input type="text" name="tenphong" value="{{$phong->TenPhong}}" class="form-control" required>
+                            <input type="text" name="tenphong" value="{{$phong->TenPhong}}" class="form-control @error('tenphong') is-invalid @enderror">
+                            @error('tenphong')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror  
                         </div>
 
                         <div class="form-group">
                             <label>Số ghế tối đa</label>
-                            <input type="text" name="soghetoida" value="{{$phong->SoGheToiDa}}" class="form-control" required>
+                            <input type="text" name="soghetoida" value="{{$phong->SoGheToiDa}}" class="form-control @error('soghetoida') is-invalid @enderror">
+                            @error('soghetoida')
+                                <div class="text-danger"><strong>{{ $message }}</strong></div>
+                            @enderror  
                         </div>
                         <button type="submit" class="btn btn-primary">Sửa phòng</button>
                     </form>

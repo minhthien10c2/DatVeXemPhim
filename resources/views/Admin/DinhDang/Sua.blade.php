@@ -15,7 +15,7 @@
 								</div>							
 								<div class="form-group">
 									<label>Tên định dạng</label>						
-									<input type="text" name="tendinhdang" value="{{$dinhdang->TenDinhDang}}" class="form-control  @error('tenloai') is-invalid @enderror" value="{{ old('tendinhdang') }}">
+									<input type="text" name="tendinhdang" value="{{$dinhdang->TenDinhDang}}" class="form-control  @error('tendinhdang') is-invalid @enderror" value="{{ old('tendinhdang') }}">
 									@error('tendinhdang')
 										<div class="text-danger"><strong>{{ $message }}</strong></div>
 									@enderror
