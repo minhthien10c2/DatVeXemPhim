@@ -133,8 +133,8 @@
 					<!-- end card -->
 					@endforeach
 					
-					<div class="col-md-12">
-					{{$phimall->links()}}
+					<div style="margin:auto">
+						{{$phimall->links()}}
 					</div>
 	
 					

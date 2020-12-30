@@ -19,7 +19,7 @@ class NguoiDungController extends Controller
     {     
         if(Auth::attempt(['email'=>$request->Email,'password'=>$request->Password]))
         {
-            return redirect()->route('home');
+            return redirect()->route('admin');
         }
         else 
         {

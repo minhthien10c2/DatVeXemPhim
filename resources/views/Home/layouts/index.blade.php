@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="home_assett/css/plyr.css">
         <link rel="stylesheet" href="home_assett/css/photoswipe.css">
         <link rel="stylesheet" href="home_assett/css/main.css">
+		<link rel="stylesheet" href="home_assett/css/Pagination.css">
 
         <!-- Favicons -->
         <link rel="icon" type="image/png" href="home_assett/img/LOGO.png" sizes="32x32">
