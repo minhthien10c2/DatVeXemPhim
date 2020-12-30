@@ -10,7 +10,8 @@ class LoaiPhim_Phim extends Model
     use HasFactory;
 
     Protected $table = 'loaiphim_phim';
-    Protected $fillable = ['IDPhim', 'IDLoaiPhim'] ;
+    Protected $fillable = ['IDPhim', 'IDLoaiPhim'];
+
     public $timestamps = false;
 
     public function Phim()

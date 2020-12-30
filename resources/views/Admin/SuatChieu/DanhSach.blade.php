@@ -44,9 +44,9 @@
 								@foreach($suatchieu as $sc)
 									@php $stt++; @endphp
 									<tr class="table-active">
-										<td>{{$stt}}</td>
-										<td>{{$sc->Phong->DinhDang->TenDinhDang}}</td>
+										<td>{{$stt}}</td>								
 										<td>{{$sc->Phim->TenPhim}}</td>
+										<td>{{$sc->Phong->DinhDang->TenDinhDang}}</td>
 										<td>{{$sc->Phong->Rap->HeThongRap->TenHeThongRap}}</td>
 										<td>{{$sc->Phong->Rap->TenRap}}</td>
 										<td>{{$sc->Phong->TenPhong}}</td>									

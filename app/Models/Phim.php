@@ -18,13 +18,23 @@ class Phim extends Model
         return $this->hasMany('App\Models\DinhDang_Phim', 'IDPhim', 'id');
     }
 
-    public function TheLoai_Phim()
+    public function LoaiPhim_Phim()
     {
-        return $this->hasMany('App\Models\TheLoai_Phim', 'IDPhim', 'id');
+        return $this->hasMany('App\Models\LoaiPhim_Phim', 'IDPhim', 'id');
     }
 
     public function SuatChieu()
     {
         return $this->hasMany('App\Models\SuatChieu', 'IDPhim', 'id');
+    }
+
+    public function LoaiPhim()
+    {
+        return $this->belongsToMany(LoaiPhim::class, 'loaiphim_phim', 'IDPhim', 'IDLoaiPhim');
+    }
+
+    public function DinhDang()
+    {
+        return $this->belongsToMany(DinhDang::class, 'dinhdang_phim', 'IDPhim', 'IDDinhDang');
     }
 }

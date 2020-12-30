@@ -1,6 +1,5 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -93,3 +92,4 @@
 	<script src="home_assett/js/photoswipe-ui-default.min.js"></script>
 	<script src="home_assett/js/main.js"></script>
 </body>
+</html>

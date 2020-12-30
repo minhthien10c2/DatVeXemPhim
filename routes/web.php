@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'adminIndex'])->name('admin');
+
+Route::group(['prefix'=>'home','middleware'=>'loginadmin'], function(){
+    Route::get('/', [App\Http\Controllers\ClientController::class, 'homeIndex'])->name('homeindex');
+});
 
 Route::get('/dangnhap', [App\Http\Controllers\NguoiDungController::class, 'getDangNhap'])->name('dangnhap');
 Route::post('/dangnhap', [App\Http\Controllers\NguoiDungController::class, 'postDangNhap'])->name('dangnhap');
