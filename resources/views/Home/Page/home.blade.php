@@ -33,15 +33,15 @@
 								<div class="card card--big">
 									<div class="card__cover">
 										<img src="{{ env('APP_URL') . '/storage/app/IMG/' . $p->HinhAnh }}" alt="">
-										<a href="" class="card__play">										
+										<a href="{{route('chitietphim',['id'=>$p->id])}}" class="card__play">										
 											<i class="icon ion-ios-play"></i>
 										</a>
 									</div>
 									<div class="card__content">
-										<h3 class="card__title"><a href="">{{$p->TenPhim}}</a></h3>
+										<h3 class="card__title"><a href="{{route('chitietphim',['id'=>$p->id])}}">{{$p->TenPhim}}</a></h3>
 										<span class="card__category">
 										@foreach($p->LoaiPhim as $lp)
-											<a href="#">{{$lp->TenLoaiPhim}}</a>	
+											<a href="">{{$lp->TenLoaiPhim}}</a>	
 										@endforeach													
 										</span>
 										
@@ -84,7 +84,7 @@
 								<div class="col-12 col-sm-4">
 									<div class="card__cover">
 										<img src="{{ env('APP_URL') . '/storage/app/IMG/' . $ph->HinhAnh }}" alt="">
-										<a href="#" class="card__play">
+										<a href="{{route('chitietphim',['id'=>$ph->id])}}" class="card__play">
 											<i class="icon ion-ios-play"></i>
 										</a>
 									</div>
@@ -92,7 +92,7 @@
 								
 								<div class="col-12 col-sm-8">
 									<div class="card__content">
-										<h3 class="card__title"><a href="ChiTietPhim.jsp?id=<%= p.getId()%>">{{$ph->TenPhim}}</a></h3>
+										<h3 class="card__title"><a href="{{route('chitietphim',['id'=>$ph->id])}}">{{$ph->TenPhim}}</a></h3>
 										<span class="card__category">
 											@foreach($ph->LoaiPhim as $lp1)
 												<a href="#">{{$lp1->TenLoaiPhim}}</a>	

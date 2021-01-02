@@ -17,6 +17,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'adminIndex'])->nam
 
 Route::group(['prefix'=>'home','middleware'=>'loginadmin'], function(){
     Route::get('/', [App\Http\Controllers\ClientController::class, 'homeIndex'])->name('homeindex');
+    Route::get('/userinfo', [App\Http\Controllers\ClientController::class, 'getUserInfo'])->name('thongtinnguoidung');
+    Route::get('/listphanhoi', [App\Http\Controllers\ClientController::class, 'getListPhanHoi'])->name('listphanhoi');
+    Route::get('/listkhuyenmai', [App\Http\Controllers\ClientController::class, 'getListKhuyenMai'])->name('listkhuyenmai');
+    Route::get('/khuyenmai/{id}', [App\Http\Controllers\ClientController::class, 'getKhuyenMai'])->name('khuyenmai');
+    Route::get('/phanhoi', [App\Http\Controllers\ClientController::class, 'getPhanHoi'])->name('phanhoi');
+    Route::get('/chitietphim/{id}', [App\Http\Controllers\ClientController::class, 'getChiTietPhim'])->name('chitietphim');
 });
 
 Route::get('/dangnhap', [App\Http\Controllers\NguoiDungController::class, 'getDangNhap'])->name('dangnhap');
@@ -32,6 +38,7 @@ Route::get('/ajaxgetquanhuyen', [App\Http\Controllers\QuanHuyenController::class
 Route::group(['prefix'=>'nguoidung','middleware'=>'loginadmin'], function(){
     Route::get('/danhsach', [App\Http\Controllers\NguoiDungController::class, 'getDanhSach'])->name('nguoidung.danhsach');       
     Route::get('/sua/{id}', [App\Http\Controllers\NguoiDungController::class, 'getSua'])->name('nguoidung.sua');       
+    Route::post('/sua/{id}', [App\Http\Controllers\NguoiDungController::class, 'postSua'])->name('nguoidung.sua');       
     Route::get('/xoa/{id}', [App\Http\Controllers\NguoiDungController::class, 'getXoa'])->name('nguoidung.xoa');       
 });
 

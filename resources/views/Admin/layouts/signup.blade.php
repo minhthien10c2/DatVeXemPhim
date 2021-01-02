@@ -43,28 +43,54 @@
 							</a>
 
 							<div class="sign__group">
-								<input type="text" name="HoTen" class="sign__input" placeholder="Họ và tên">
+								<input type="text" name="HoTen" value="{{ old('HoTen')}}" class="sign__input @error('HoTen') is-invalid @enderror" placeholder="Họ và tên">
+								@error('HoTen')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 							
 							<div class="sign__group">
-								<input type="text" name="SDT" class="sign__input" placeholder="Số điện thoại">
+								<input type="text" name="SDT" value="{{ old('SDT')}}" class="sign__input @error('SDT') is-invalid @enderror" placeholder="Số điện thoại">
+								@error('SDT')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 							
 							<div class="sign__group">
-								<input type="text" name="DiaChi" class="sign__input" placeholder="Địa chỉ">
+								<input type="text" name="DiaChi" value="{{ old('DiaChi')}}" class="sign__input @error('DiaChi') is-invalid @enderror" placeholder="Địa chỉ">
+								@error('DiaChi')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 
 							<div class="sign__group">
-								<input type="text" name="Email" class="sign__input" placeholder="Email">
+								<input type="text" name="Email" value="{{ old('Email')}}" class="sign__input @error('Email') is-invalid @enderror" placeholder="Email">
+								@error('Email')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 
 							<div class="sign__group">
-								<input type="password" name="Password" class="sign__input" placeholder="Mật khẩu">
+								<input type="password" name="Password" class="sign__input @error('Password') is-invalid @enderror" placeholder="Mật khẩu">
+								@error('Password')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>		
+                            	@enderror
+							</div>
+								
+
+							<div class="sign__group">
+								<input type="password" name="Password-Confirm"  class="sign__input @error('Password-Confirm') is-invalid @enderror" placeholder="Mật lại khẩu">
+								@error('Password-Confirm')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 
 							<div class="sign__group sign__group--checkbox">
-								<input id="remember" name="remember" type="checkbox" checked="checked">
+								<input id="remember" name="remember" class="@error('remember') is-invalid @enderror" type="checkbox" checked="checked">
 								<label for="remember">Tôi đã đọc và đồng ý với <a href="#">Chính sách bảo mật</a></label>
+								@error('remember')
+                                	<div style="color:#ff55a5;"><strong>{{ $message }}</strong></div>
+                            	@enderror
 							</div>
 							
 							<button class="sign__btn" type="submit">Đăng ký</button>

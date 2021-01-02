@@ -36,6 +36,16 @@ class NguoiDungController extends Controller
 
     public function postDangKy(Request $request)
     {
+        $this->validate($request, [
+            'HoTen' => ['required'],
+            'SDT' => ['required', 'digits: 10', 'unique:users'],
+            'DiaChi' => ['required'],
+            'Email' => ['required', 'unique:users', 'email:rfc,dns'],
+            'Password' => ['required', 'min:8'],
+            'Password-Confirm' => ['required', 'same:Password'],
+            'remember' => ['required'],
+        ]);
+
         $orm = new User();
         $orm->name = $request->HoTen;
         $orm->SDT = $request->SDT;
@@ -54,4 +64,20 @@ class NguoiDungController extends Controller
         return view('Admin.NguoiDung.DanhSach', compact('nguoidung'));
     }
 
+    public function postSua(Request $request, $id)
+    {
+        $this->validate($request, [
+            'HoTen' => ['required'],
+            'SDT' => ['required', 'digits: 10','unique:users,SDT,'.$id],
+            'DiaChi' => ['required'],
+        ]);
+
+        $orm = User::find($id);
+        $orm->name = $request->HoTen;
+        $orm->SDT = $request->SDT;
+        $orm->DiaChi = $request->DiaChi; 
+        $orm->password = Hash::make($request->Password);
+        $orm->save();
+        return redirect()->route('thongtinnguoidung')->with('mes','Sửa thành công');
+    }
 }

@@ -26,4 +26,9 @@ class SuatChieu extends Model
     {
         return $this->belongsTo('App\Models\Phim', 'IDPhim', 'id');
     }
+
+    public function Rap()
+    {
+        return $this->belongsToMany(Rap::class);
+    }
 }

@@ -15,7 +15,7 @@ class PhanHoiController extends Controller
 
     public function getThem()
     {
-        return view('Admin.PhanHoi.Them')->with('mes','Thêm thành công');
+        return view('Home.Page.phanhoi');
     }
 
     public function postThem(Request $request)
@@ -30,7 +30,7 @@ class PhanHoiController extends Controller
         $orm->TieuDe = $request->tieude;
         $orm->ChiTiet = $request->chitiet;
         $orm->save();
-        return redirect()->route('phanhoi.danhsach');
+        return redirect()->route('listphanhoi');
     }
 
     public function getSua($id)

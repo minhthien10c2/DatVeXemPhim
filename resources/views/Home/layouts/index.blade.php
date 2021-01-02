@@ -58,18 +58,18 @@
 									<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Người dùng</a>
 
 									<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-											<li><a href="ThongTinNguoiDung.jsp">Thông tin người dùng</a></li>
+											<li><a href="{{route('thongtinnguoidung')}}">Thông tin người dùng</a></li>
 									</ul>
 								</li>
 								
 								<!-- end dropdown -->
 							
                                 <li class="header__nav-item">
-									<a href="KhuyenMai.jsp" class="header__nav-link">Khuyến mãi</a>
+									<a href="{{route('listkhuyenmai')}}" class="header__nav-link">Khuyến mãi</a>
                                 </li>
                                 
                                 <li class="header__nav-item">
-									<a href="PhanHoi.jsp" class="header__nav-link">Phản hồi</a>                             
+									<a href="{{route('listphanhoi')}}" class="header__nav-link">Phản hồi</a>                             
 								</li>
 								
 							</ul>
@@ -139,8 +139,8 @@
 					<div class="col-12 col-md-3">
 						<h6 class="footer__title">Tải ứng dụng</h6>
 						<ul class="footer__app">
-							<li><a href="#"><img src="img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
-							<li><a href="#"><img src="img/google-play-badge.png" alt=""></a></li>
+							<li><a href="#"><img src="home_assett/img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
+							<li><a href="#"><img src="home_assett/img/google-play-badge.png" alt=""></a></li>
 						</ul>
 					</div>
 					<!-- end footer list -->
