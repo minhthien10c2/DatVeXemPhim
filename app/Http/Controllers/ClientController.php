@@ -8,6 +8,7 @@ use App\Models\DinhDang;
 use App\Models\SuatChieu;
 use App\Models\PhanHoi;
 use App\Models\KhuyenMai;
+use App\Models\Rap;
 use App\Models\LoaiPhim_Phim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -57,9 +58,41 @@ class ClientController extends Controller
     {
         $phim = Phim::find($id);
         $suatchieu = SuatChieu::where('IDPhim', $id)->with('phong')->distinct('IDRap')->get();
-       
+        
+       $hethongrapbysuatchieu = DB::table('suatchieu as sc')
+       ->select('htr.id','htr.TenHeThongRap')
+       ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+       ->join('rap as r','p.IDRap','=','r.id')
+       ->join('hethongrap as htr','r.IDHeThongRap','=','htr.id')
+       ->where('sc.IDPhim','=', $id)
+       ->distinct('htr.id')
+       ->get();
+
+       $rapbysuatchieuandhtr = DB::table('suatchieu as sc')
+       ->select('r.id','r.IDHeThongRap','r.TenRap')
+       ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+       ->join('rap as r','p.IDRap','=','r.id')
+       ->where('sc.IDPhim','=', $id)
+       ->distinct('r.id')
+       ->get();
+
+       $ngaychieuwithrbysuatchieu = DB::table('suatchieu as sc')
+       ->select('sc.NgayChieu', 'r.id')
+       ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+       ->join('rap as r','p.IDRap','=','r.id')
+       ->where('sc.IDPhim','=', $id)
+       ->orderBy('sc.NgayChieu','ASC')
+       ->get();
+
+       $giochieuchieuwithrbysuatchieu = DB::table('suatchieu as sc')
+       ->select('sc.GioBatDau','sc.NgayChieu', 'r.id')
+       ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+       ->join('rap as r','p.IDRap','=','r.id')
+       ->where('sc.IDPhim','=', $id)
+       ->orderBy('sc.NgayChieu','ASC')
+       ->get();
         
         
-        return view('Home.Page.chitietphim', compact('phim','suatchieu'));
+        return view('Home.Page.chitietphim', compact('phim','hethongrapbysuatchieu','rapbysuatchieuandhtr','ngaychieuwithrbysuatchieu','giochieuchieuwithrbysuatchieu'));
     }
 }

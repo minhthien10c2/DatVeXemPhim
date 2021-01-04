@@ -53,7 +53,7 @@
 									</ul>
 
 									<div class="card__description card__description--details">
-                                        {{$suatchieu}}
+                                        {{$giochieuchieuwithrbysuatchieu}}
 									</div>
 								</div>
 							</div>
@@ -77,15 +77,14 @@
 				<!-- accordion -->
 				<div class="col-12 col-xl-6">
 					<div class="accordion" id="accordion">
-						@php $thtrOld = ""; @endphp
-                        @foreach($suatchieu->unique('IDPhong') as $sc)
-                        @if($thtrOld != $sc->Phong->Rap->HeThongRap->TenHeThongRap)
-                            @php $thtrOld = $sc->Phong->Rap->HeThongRap->TenHeThongRap; @endphp
+						
+                        @foreach($hethongrapbysuatchieu as $htrbsc)
+                        
                             <div class="accordion__card">
                                 <div class="card-header" id="headingOne">
                                     <button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         
-                                        <span>{{$sc->Phong->Rap->HeThongRap->TenHeThongRap}}</span>
+                                        <span>{{$htrbsc->TenHeThongRap}}</span>
                                     
                                     </button>
                                 </div>
@@ -103,13 +102,28 @@
 
                                             <tbody>
 
-                                                @foreach($suatchieu->unique('IDPhong') as $sc1)
-                                                    @if($sc->Phong->Rap->HeThongRap->id == $sc1->Phong->Rap->IDHeThongRap)
-                                                        <tr>
-                                                            <th>{{$sc1->Phong->Rap->TenRap}}</th>
-                                                            <td>2/11/2020, 3/11/2020</td>
-                                                            <td>7:00 AM, 9:00 AM, 11:00 AM</td>
+                                                @foreach($rapbysuatchieuandhtr as $rbscahtr)
+                                                    @if($rbscahtr->IDHeThongRap == $htrbsc->id)
+                                                       
+													    <tr>
+                                                            <th>{{$rbscahtr->TenRap}}</th>
+
+                                                            <td>
+																
+																@foreach($ngaychieuwithrbysuatchieu as $nc)
+																	@if($nc->id == $rbscahtr->id)
+																	<table>
+																		<tr>
+																			{{$nc->NgayChieu}}
+																		</tr>
+																		</table>
+																	@endif	
+																@endforeach
+																
+															</td>
+                                                            
                                                         </tr>
+
                                                     @endif
                                                 @endforeach
 
@@ -118,7 +132,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        
                     @endforeach
 
 			</div>
