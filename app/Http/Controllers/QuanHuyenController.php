@@ -66,7 +66,7 @@ class QuanHuyenController extends Controller
         $data = $request->all();
         if ($data['matp']){
             $output = "";
-            $quanhuyen = QuanHuyen::where('IDThanhPho', $data['matp'])->get();
+            $quanhuyen = QuanHuyen::where('IDThanhPho', '=' ,$data['matp'])->get();
             foreach($quanhuyen as $qh){
                 $output .= '<option value="'.$qh->id.'">'.$qh->TenQuanHuyen.'</option>';
             }

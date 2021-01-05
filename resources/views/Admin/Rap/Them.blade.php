@@ -74,7 +74,8 @@
             $('#QuanHuyen').find('option').remove();
             $('#QuanHuyen').append('<option>Chọn quận huyện</option>'); 
 
-            var matp = $(this).val();           
+            var matp = $(this).val(); 
+                 
             var token = $('input[name="_token"]').val();
  
            $.ajax({
@@ -82,6 +83,7 @@
                 method: 'get',
                 data: {matp:matp, token:token},
                 success: function(data){
+                    console.log(data);
                     $('#QuanHuyen').append(data);
                 }
            });
