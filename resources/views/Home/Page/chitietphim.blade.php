@@ -53,7 +53,7 @@
 									</ul>
 
 									<div class="card__description card__description--details">
-                                        {{$giochieuchieuwithrbysuatchieu}}
+                                        {{$giochieuwithrbysuatchieu}}
 									</div>
 								</div>
 							</div>
@@ -65,7 +65,7 @@
 				<!-- end content -->
                 <div class="col-12" style="margin-bottom:20px;">
                     <div class="details__wrap">
-                        <a href="bookticket.html" class="details_book__ticket__btn">Đặt vé ngay</a>
+                        <a href="{{route('datve',['id'=>$phim->id])}}" class="details_book__ticket__btn">Đặt vé ngay</a>
                     </div>
                 </div>
 				<!-- player -->
@@ -96,7 +96,7 @@
                                                 <tr>
                                                     <th>Tên rạp</th>
                                                     <th>Ngày</th>
-                                                    <th>Suất chiếu</th>
+                                                   
                                                 </tr>
                                             </thead>
 
@@ -112,11 +112,14 @@
 																
 																@foreach($ngaychieuwithrbysuatchieu as $nc)
 																	@if($nc->id == $rbscahtr->id)
-																	<table>
-																		<tr>
-																			{{$nc->NgayChieu}}
-																		</tr>
-																		</table>
+																			{{$nc->NgayChieu}}:
+																			@foreach($giochieuwithrbysuatchieu as $gc)
+																				@if($gc->id == $rbscahtr->id && $nc->NgayChieu == $gc->NgayChieu)
+																					{{$gc->GioBatDau}}
+																				@endif
+																			@endforeach
+																		<br>
+																		<hr>
 																	@endif	
 																@endforeach
 																

@@ -7,6 +7,7 @@ use App\Models\Phim;
 use App\Models\HeThongRap;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SuatChieuController extends Controller
 {
@@ -75,5 +76,44 @@ class SuatChieuController extends Controller
         $orm = SuatChieu::find($id);
         $orm->delete();
         return redirect()->route('suatchieu.danhsach')->with('mes','Xóa thành công');
+    }
+
+    public function getAjaxNCByRAndSC(Request $request){
+        $data = $request->all();
+        if ($data['mar']){
+            $output = "";
+            $ngaychieu = DB::table('suatchieu as sc')
+            ->select('sc.NgayChieu')
+            ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+            ->join('rap as r','p.IDRap','=','r.id')
+            ->where('sc.IDPhim','=', $data['idphim'])
+            ->where('r.id','=',$data['mar'])
+            ->orderBy('sc.NgayChieu','ASC')
+            ->get();
+            foreach($ngaychieu as $nc){
+                $output .= '<option value="'.$nc->NgayChieu.'">'.$nc->NgayChieu.'</option>';
+            }
+        }               
+        echo $output;
+    }
+
+    public function getAjaxGioChieuByRAndSC(Request $request){
+        $data = $request->all();
+        if ($data['mar'] && $data['ngaychieu']){
+            $output = "";
+            $giochieu = DB::table('suatchieu as sc')
+            ->select('sc.GioBatDau')
+            ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+            ->join('rap as r','p.IDRap','=','r.id')
+            ->where('sc.IDPhim','=', $data['idphim'])
+            ->where('sc.NgayChieu', '=', $data['ngaychieu'])
+            ->where('r.id', '=', $data['mar'])
+            ->orderBy('sc.NgayChieu','ASC')
+            ->get();
+            foreach($giochieu as $gc){
+                $output .= '<option value="'.$gc->GioBatDau.'">'.$gc->GioBatDau.'</option>';
+            }
+        }               
+        echo $output;
     }
 }

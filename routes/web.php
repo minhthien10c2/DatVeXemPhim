@@ -23,6 +23,7 @@ Route::group(['prefix'=>'home','middleware'=>'loginadmin'], function(){
     Route::get('/khuyenmai/{id}', [App\Http\Controllers\ClientController::class, 'getKhuyenMai'])->name('khuyenmai');
     Route::get('/phanhoi', [App\Http\Controllers\ClientController::class, 'getPhanHoi'])->name('phanhoi');
     Route::get('/chitietphim/{id}', [App\Http\Controllers\ClientController::class, 'getChiTietPhim'])->name('chitietphim');
+    Route::get('/datve/{id}', [App\Http\Controllers\ClientController::class, 'getDatVe'])->name('datve');
 });
 
 Route::get('/dangnhap', [App\Http\Controllers\NguoiDungController::class, 'getDangNhap'])->name('dangnhap');
@@ -31,6 +32,9 @@ Route::get('/dangky', [App\Http\Controllers\NguoiDungController::class, 'getDang
 Route::post('/dangky', [App\Http\Controllers\NguoiDungController::class, 'postDangKy'])->name('dangky');
 
 Route::get('/ajaxgetrap', [App\Http\Controllers\RapController::class, 'getAjaxGetRap']);
+Route::get('/ajaxgetrapbyhtrsc', [App\Http\Controllers\RapController::class, 'getAjaxGetRapByHTRAndSC']);
+Route::get('/ajaxgetncbyrandphim', [App\Http\Controllers\SuatChieuController::class, 'getAjaxNCByRAndSC']);
+Route::get('/ajaxgetgcbyrandphim', [App\Http\Controllers\SuatChieuController::class, 'getAjaxGioChieuByRAndSC']);
 Route::get('/ajaxgetphong', [App\Http\Controllers\PhongController::class, 'getAjaxGetPhong']);
 Route::get('/ajaxgetquanhuyen', [App\Http\Controllers\QuanHuyenController::class, 'getAjaxGetQuanHuyen']);
 

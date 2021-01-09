@@ -7,6 +7,7 @@ use App\Models\HeThongRap;
 use App\Models\ThanhPho;
 use App\Models\Phong;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RapController extends Controller
 {
@@ -75,6 +76,25 @@ class RapController extends Controller
         if ($data['mahtr']){
             $output = "";
             $rap = Rap::where('IDHeThongRap', $data['mahtr'])->get();
+            foreach($rap as $r){
+                $output .= '<option value="'.$r->id.'">'.$r->TenRap.'</option>';
+            }
+        }               
+        echo $output;
+    }
+
+    public function getAjaxGetRapByHTRAndSC(Request $request){
+        $data = $request->all();
+        if ($data['mahtr']){
+            $output = "";
+            $rap = DB::table('suatchieu as sc')
+            ->select('r.id','r.TenRap')
+            ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+            ->join('rap as r','p.IDRap','=','r.id')
+            ->where('sc.IDPhim','=', $data['idphim'])
+            ->where('r.IDHeThongRap','=',$data['mahtr'])
+            ->distinct('r.id')
+            ->get();
             foreach($rap as $r){
                 $output .= '<option value="'.$r->id.'">'.$r->TenRap.'</option>';
             }

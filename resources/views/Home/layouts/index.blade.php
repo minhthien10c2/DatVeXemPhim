@@ -212,6 +212,7 @@
         <script src="home_assett/js/jquery.morelines.min.js"></script>
         <script src="home_assett/js/photoswipe.min.js"></script>
         <script src="home_assett/js/photoswipe-ui-default.min.js"></script>
-        <script src="home_assett/js/main.js"></script>
+		<script src="home_assett/js/main.js"></script>
+		@yield('script')
 	</body>
 </html>

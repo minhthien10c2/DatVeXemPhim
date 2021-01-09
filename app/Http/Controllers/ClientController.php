@@ -84,7 +84,7 @@ class ClientController extends Controller
        ->orderBy('sc.NgayChieu','ASC')
        ->get();
 
-       $giochieuchieuwithrbysuatchieu = DB::table('suatchieu as sc')
+       $giochieuwithrbysuatchieu = DB::table('suatchieu as sc')
        ->select('sc.GioBatDau','sc.NgayChieu', 'r.id')
        ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
        ->join('rap as r','p.IDRap','=','r.id')
@@ -93,6 +93,23 @@ class ClientController extends Controller
        ->get();
         
         
-        return view('Home.Page.chitietphim', compact('phim','hethongrapbysuatchieu','rapbysuatchieuandhtr','ngaychieuwithrbysuatchieu','giochieuchieuwithrbysuatchieu'));
+        return view('Home.Page.chitietphim', compact('phim','hethongrapbysuatchieu','rapbysuatchieuandhtr','ngaychieuwithrbysuatchieu','giochieuwithrbysuatchieu'));
+    }
+
+    public function getDatVe($id)
+    {
+        $phim = Phim::find($id);
+        $suatchieu = SuatChieu::where('IDPhim', $id)->with('phong')->distinct('IDRap')->get();
+        
+        $hethongrapbysuatchieu = DB::table('suatchieu as sc')
+        ->select('htr.id','htr.TenHeThongRap')
+        ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+        ->join('rap as r','p.IDRap','=','r.id')
+        ->join('hethongrap as htr','r.IDHeThongRap','=','htr.id')
+        ->where('sc.IDPhim','=', $id)
+        ->distinct('htr.id')
+        ->get();
+
+        return view('Home.Page.datve', compact('phim', 'suatchieu', 'hethongrapbysuatchieu'));
     }
 }
