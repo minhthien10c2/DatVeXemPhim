@@ -6,7 +6,7 @@ use Closure;
 use Auth;
 use Illuminate\Http\Request;
 
-class CheckLoginAdmin
+class CheckUser
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check())
+        if(Auth::User()->Quyen == 1)
             return $next($request);
         else
-            return redirect()->route('admin');
+            return redirect()->route('homeindex');
     }
 }

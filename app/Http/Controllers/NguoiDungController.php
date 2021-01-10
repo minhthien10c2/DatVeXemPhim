@@ -12,10 +12,27 @@ class NguoiDungController extends Controller
     
     public function getDangNhap()
     {
-        return view('Admin.login');
+        return view('Home.Page.dangnhap');
     }
 
     public function postDangNhap(Request $request)
+    {     
+        if(Auth::attempt(['email'=>$request->Email,'password'=>$request->Password]))
+        {
+            return redirect()->route('homeindex');
+        }
+        else 
+        {
+            return redirect()->route('dangnhap');   
+        }
+    }
+
+    public function getDangNhapAdmin()
+    {
+        return view('Admin.login');
+    }
+
+    public function postDangNhapAdmin(Request $request)
     {     
         if(Auth::attempt(['email'=>$request->Email,'password'=>$request->Password]))
         {
@@ -23,9 +40,19 @@ class NguoiDungController extends Controller
         }
         else 
         {
-            return redirect()->route('dangnhap');
-            
+            return redirect()->route('dangnhap');   
         }
+    }
+
+    public function postDangXuat(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 

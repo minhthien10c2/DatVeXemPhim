@@ -11,9 +11,7 @@
             @endif
                 <ul class="dropdown-menu dropdown-menu-right account">
                     <li>
-                        <form action="NguoiDungDangXuat" method="post">
-                            <input type="submit" value="Đăng xuất" class="form-control" style="border:none;">
-                        </form>
+                        <a href="{{route('dangxuat')}}">Đăng xuất</a>
                     </li>
                 </ul>
             </div>

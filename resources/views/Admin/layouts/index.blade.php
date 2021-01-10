@@ -34,7 +34,7 @@
                 </div>
                 <!-- logo -->
                 <div class="navbar-brand">
-                    <a href="index.jsp">BUGCinema</a>
+                    <a href="{{route('homeindex')}}">BUGCinema</a>
                 </div>
                 <!-- end logo -->
 

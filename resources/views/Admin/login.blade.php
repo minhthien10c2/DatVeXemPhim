@@ -14,7 +14,7 @@
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
         <!-- ICONS -->
-        <link rel="icon" type="image/png" sizes="96x96" href="img/LOGO.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="admin_asset/img/LOGO.png">
     </head>
     
     <body>
@@ -25,7 +25,7 @@
                     <div class="auth-box">
                         <div class="content">
                             <div class="header">
-                                <div class="logo text-center"><img src="img/LOGO.png" alt="DiffDash"></div>
+                                <div class="logo text-center"><img src="admin_asset/img/LOGO.png" alt="DiffDash"></div>
                                 <p class="lead">Đăng nhập</p>
                             </div>
                             <form class="form-auth-small" action="{{ route('dangnhap') }}" method = "post">

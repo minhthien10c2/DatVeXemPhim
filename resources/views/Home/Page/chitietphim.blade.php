@@ -64,8 +64,14 @@
 				</div>
 				<!-- end content -->
                 <div class="col-12" style="margin-bottom:20px;">
-                    <div class="details__wrap">
-                        <a href="{{route('datve',['id'=>$phim->id])}}" class="details_book__ticket__btn">Đặt vé ngay</a>
+					<div class="details__wrap">               
+						@if(Auth::user() != null)
+							<!-- section title -->
+							<a href="{{route('datve',['id'=>$phim->id])}}" class="details_book__ticket__btn">Đặt vé ngay</a>
+							<!-- end section title -->		
+						@else
+							<a href="{{route('dangnhap')}}" style="color:white; float:right;">Đăng nhập để đặt vé</a>
+						@endif
                     </div>
                 </div>
 				<!-- player -->
@@ -144,103 +150,9 @@
 	</section>
 	<!-- end details -->
 
-	<!-- content -->
-	<section class="content">
-		<div class="content__head">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-
-						<!-- content tabs nav -->
-						<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
-							<li class="nav-item">
-								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Đánh giá</a>
-							</li>
-						</ul>
-						<!-- end content tabs nav -->
-
-						<!-- content mobile tabs nav -->
-						<div class="content__mobile-tabs" id="content__mobile-tabs">
-							<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<input type="button" value="Comments">
-								<span></span>
-							</div>
-
-							<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item"><a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Comments</a></li>
-								</ul>
-							</div>
-						</div>
-						<!-- end content mobile tabs nav -->
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-lg-8 col-xl-8">
-					<!-- content tabs -->
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
-							<div class="row">
-								<!-- reviews -->
-								<div class="col-12">
-									<div class="reviews">
-										<ul class="reviews__list">
-											<li class="reviews__item">
-												<div class="reviews__autor">
-													<img class="reviews__avatar" src="img/user.png" alt="">
-													<span class="reviews__name">Phim Marvel hay nhất theo ý kiến ​​của tôi</span>
-													<span class="reviews__time">24.08.2018, 17:53 bởi John Doe</span>
-
-													<span class="reviews__rating"><i class="icon ion-ios-star"></i>8.4</span>
-												</div>
-												<p class="reviews__text">Có rất nhiều biến thể của các đoạn văn của Lorem Ipsum có sẵn, nhưng phần lớn đã bị thay đổi dưới một số hình thức, bởi sự hài hước chèn ép hoặc các từ ngẫu nhiên trông thậm chí không đáng tin một chút. Nếu bạn định sử dụng một đoạn văn của Lorem Ipsum, bạn cần chắc chắn rằng không có bất kỳ điều gì đáng xấu hổ ẩn ở giữa văn bản.</p>
-											</li>
-
-											<li class="reviews__item">
-												<div class="reviews__autor">
-													<img class="reviews__avatar" src="img/user.png" alt="">
-													<span class="reviews__name">Phim Marvel hay nhất theo ý kiến ​​của tôi</span>
-													<span class="reviews__time">24.08.2018, 17:53 bởi John Doe</span>
-
-													<span class="reviews__rating"><i class="icon ion-ios-star"></i>9.0</span>
-												</div>
-												<p class="reviews__text">Có rất nhiều biến thể của các đoạn văn của Lorem Ipsum có sẵn, nhưng phần lớn đã bị thay đổi dưới một số hình thức, bởi sự hài hước chèn ép hoặc các từ ngẫu nhiên trông thậm chí không đáng tin một chút. Nếu bạn định sử dụng một đoạn văn của Lorem Ipsum, bạn cần chắc chắn rằng không có bất kỳ điều gì đáng xấu hổ ẩn ở giữa văn bản.</p>
-											</li>
-
-											<li class="reviews__item">
-												<div class="reviews__autor">
-													<img class="reviews__avatar" src="img/user.png" alt="">
-													<span class="reviews__name">Phim Marvel hay nhất theo ý kiến ​​của tôi</span>
-													<span class="reviews__time">24.08.2018, 17:53 bởi John Doe</span>
-
-													<span class="reviews__rating"><i class="icon ion-ios-star"></i>7.5</span>
-												</div>
-												<p class="reviews__text">Có rất nhiều biến thể của các đoạn văn của Lorem Ipsum có sẵn, nhưng phần lớn đã bị thay đổi dưới một số hình thức, bởi sự hài hước chèn ép hoặc các từ ngẫu nhiên trông thậm chí không đáng tin một chút. Nếu bạn định sử dụng một đoạn văn của Lorem Ipsum, bạn cần chắc chắn rằng không có bất kỳ điều gì đáng xấu hổ ẩn ở giữa văn bản.</p>
-											</li>
-										</ul>
-
-										<form action="#" class="form">
-											<input type="text" class="form__input" placeholder="Tiêu đề">
-											<textarea class="form__textarea" placeholder="Nội dung"></textarea>
-											<div class="form__slider">
-												<div class="form__slider-rating" id="slider__rating"></div>
-												<div class="form__slider-value" id="form__slider-value"></div>
-											</div>
-											<button type="button" class="form__btn">Gửi</button>
-										</form>
-									</div>
-								</div>
-								<!-- end reviews -->
-							</div>
-						</div>
-					</div>
-					<!-- end content tabs -->
-				</div>
-			</div>
-		</div>
-	</div>
+	
+</div>
+</div>
+</div>
+</div>
 @endsection

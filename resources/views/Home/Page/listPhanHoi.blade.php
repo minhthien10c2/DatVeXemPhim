@@ -7,10 +7,16 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="section__wrap">
+					<h2 class="section__title">Phản hồi</h2>
+					@if(Auth::user() != null)
 						<!-- section title -->
-						<h2 class="section__title">Phản hồi</h2>
-                        <a href="{{route('phanhoi.them')}}" class="feedback__add">Đăng phản hồi</a>
-						<!-- end section title -->				
+						
+						<a href="{{route('phanhoi.them')}}" class="feedback__add">Đăng phản hồi</a>
+						<!-- end section title -->		
+					@else
+						<a href="{{route('dangnhap')}}" style="color:white;">Đăng nhập để đăng phản hồi</a>
+					@endif
+
 					</div>
 				</div>
 			</div>

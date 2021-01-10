@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function adminIndex()
     {
-        return view('Admin.layouts.index');
+        if(Auth::User()->Quyen == 1)
+            return view('Admin.layouts.index');
+        else
+            return redirect()->route('homeindex');
     }
 }

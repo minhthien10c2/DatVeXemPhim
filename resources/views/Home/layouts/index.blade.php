@@ -53,14 +53,16 @@
 
 								<!-- dropdown -->
 								
-								<li class="header__nav-item">
-									<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Người dùng</a>
+								@if(Auth::user() != null)								
+									<li class="header__nav-item">
+										<a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Người dùng</a>
 
-									<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-											<li><a href="{{route('thongtinnguoidung')}}">Thông tin người dùng</a></li>
-									</ul>
-								</li>
-								
+										<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
+												<li><a href="{{route('thongtinnguoidung')}}">Thông tin người dùng</a></li>
+										</ul>
+									</li>
+								@endif
+
 								<!-- end dropdown -->
 							
                                 <li class="header__nav-item">
@@ -87,13 +89,18 @@
 									<!-- <form action="NguoiDungDangXuat" method="post">	
 										<input type="submit" value="Đăng xuất" class="header__sign-in" style="color:white; border:none; cursor:pointer;">
 									</form> -->
-						
-								
-								<a href="DangNhap.jsp" class="header__sign-in">
+								@if(Auth::user() != null)
+									<a href="{{route('dangxuat')}}" class="header__sign-in">
+										<i class="icon ion-ios-log-in"></i>
+										<span>Đăng xuất</span>
+									</a>
+								@else
+									<a href="{{route('dangnhap')}}" class="header__sign-in">
 										<i class="icon ion-ios-log-in"></i>
 										<span>Đăng nhập</span>
-									</a>
-								
+									</a>														
+								@endif
+
 								</div>
 							<!-- end header auth -->
 
