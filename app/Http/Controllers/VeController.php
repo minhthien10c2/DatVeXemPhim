@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ve;
+use App\Models\SuatChieu;
+use App\Models\Ghe;
 use Illuminate\Http\Request;
 
 class VeController extends Controller
@@ -20,12 +22,29 @@ class VeController extends Controller
 
     public function postThem(Request $request)
     {
-        $orm = new Ve();
-        $orm->IDNguoiDung = $request->idphim;
-        $orm->IDSuatChieu = $request->idphong;
-        $orm->SoGhe = $request->ngaychieu;
-        $orm->save();
-        return redirect()->route('ve');
+        
+
+        $suatchieu = SuatChieu::where('IDPhim', $request->idphim)
+        ->where('IDPhong', $request->phong)
+        ->where('NgayChieu', $request->ngaychieu)
+        ->where('GioBatDau', $request->suatchieu)
+        ->get();
+
+       
+
+        foreach($request->seats as $value)
+        {
+            $orm = new Ve();
+            $orm->IDNguoiDung = $request->idnguoidung;
+            $orm->IDSuatChieu =  $suatchieu[0]->id;
+            $orm->IDGhe = $value;
+            $orm->save();
+            $ghe = Ghe::find($value);
+            $ghe->TinhTrang = 1;
+            $ghe->save();
+        }
+        
+        return redirect()->route('homeindex');
     }
 
     public function getSua($id)

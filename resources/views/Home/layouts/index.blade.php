@@ -26,8 +26,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="Dmitry Volkov">
-        <title>Đặt vé xem phim</title>
-	
+		<title>Đặt vé xem phim</title>	
 	</head>
 	<body class="body">
 		<!-- header -->

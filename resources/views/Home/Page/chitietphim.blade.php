@@ -53,7 +53,7 @@
 									</ul>
 
 									<div class="card__description card__description--details">
-                                        {{$giochieuwithrbysuatchieu}}
+                                        {{$phim->MoTa}}
 									</div>
 								</div>
 							</div>

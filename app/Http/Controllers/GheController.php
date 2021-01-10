@@ -52,4 +52,12 @@ class GheController extends Controller
         $orm->delete();
         return redirect()->route('ghe');
     }
+ 
+    public function getAjaxGetGhe(Request $request){
+        $data = $request->all();
+        if ($data['maphong']){
+            $ghe = Ghe::where('IDPhong', $data['maphong'])->get();
+        }               
+        echo $ghe;
+    }
 }

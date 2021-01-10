@@ -35,7 +35,9 @@ Route::get('/ajaxgetrap', [App\Http\Controllers\RapController::class, 'getAjaxGe
 Route::get('/ajaxgetrapbyhtrsc', [App\Http\Controllers\RapController::class, 'getAjaxGetRapByHTRAndSC']);
 Route::get('/ajaxgetncbyrandphim', [App\Http\Controllers\SuatChieuController::class, 'getAjaxNCByRAndSC']);
 Route::get('/ajaxgetgcbyrandphim', [App\Http\Controllers\SuatChieuController::class, 'getAjaxGioChieuByRAndSC']);
+Route::get('/ajaxgetsuatchieu', [App\Http\Controllers\SuatChieuController::class, 'getAjaxSuatChieu']);
 Route::get('/ajaxgetphong', [App\Http\Controllers\PhongController::class, 'getAjaxGetPhong']);
+Route::get('/ajaxgetghe', [App\Http\Controllers\GheController::class, 'getAjaxGetGhe']);
 Route::get('/ajaxgetquanhuyen', [App\Http\Controllers\QuanHuyenController::class, 'getAjaxGetQuanHuyen']);
 
 

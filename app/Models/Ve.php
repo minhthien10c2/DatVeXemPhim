@@ -10,11 +10,11 @@ class Ve extends Model
     use HasFactory;
 
     Protected $table = 've';
-    Protected $fillable = ['id', 'IDNguoiDung', 'IDSuatChieu', 'SoGhe', 'NgayMuaVe' ,'updated_at'] ;
+    Protected $fillable = ['id', 'IDNguoiDung', 'IDSuatChieu', 'SoGhe', 'created_at' ,'updated_at'] ;
 
-    public function NguoiDung()
+    public function User()
     {
-        return $this->belongsTo('App\Models\NguoiDung', 'IDNguoiDung', 'id');
+        return $this->belongsTo('App\Models\User', 'IDNguoiDung', 'id');
     }
 
     public function SuatChieu()

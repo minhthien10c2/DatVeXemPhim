@@ -1929,6 +1929,11 @@ ul {
   font-size: 15px;
 }
 
+.seats:disabled:before {
+  background-color: rgb(71, 71, 71);
+  font-size: 15px;
+}
+
 .screen {
   width: 50%;
   height: 30px;

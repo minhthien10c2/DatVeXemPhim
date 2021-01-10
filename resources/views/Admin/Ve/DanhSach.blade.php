@@ -31,31 +31,21 @@
 							</tr>
 							</thead>
 							<tbody>
-
+								@foreach ($ve as $v) 
 								<tr>
-									<td> <%= nd.getHoTen() %> </td>
-									<td> <%= htr.getTenHeThongRap() %> </td>
-									<td> <%= r.getTenRap() %> </td>
-									<td> <%= phong.getTenPhong() %> </td>
-									<td> <%= dd.getTenDinhDang() %> </td>
-									<td> <%= p.getTenPhim() %> </td>
-									<td> <%= sc.getNgayChieu() %> </td>
-									<td> <%= sc.getGioBatDau() %> </td>
-									<td> <%= sc.getGiaVe() %> </td>	
-									<td> <%= ghe.getTenGhe() %> </td>																									
-								</tr>	
-								<tr>
-									<td> <%= nd.getHoTen() %> </td>
-									<td> <%= htr.getTenHeThongRap() %> </td>
-									<td> <%= r.getTenRap() %> </td>
-									<td> <%= phong.getTenPhong() %> </td>
-									<td> <%= dd.getTenDinhDang() %> </td>
-									<td> <%= p.getTenPhim() %> </td>
-									<td> <%= sc.getNgayChieu() %> </td>
-									<td> <%= sc.getGioBatDau() %> </td>
-									<td> <%= sc.getGiaVe() %> </td>	
-									<td> <%= ghe.getTenGhe() %> </td>																									
-								</tr>									  
+									<td> {{$v->User->name }}</td>
+									<td> {{$v->SuatChieu->Phong->Rap->HeThongRap->TenHeThongRap}}</td>
+									<td> {{$v->SuatChieu->Phong->Rap->TenRap}}</td>
+									<td> {{$v->SuatChieu->Phong->TenPhong}} </td>
+									<td> {{$v->SuatChieu->Phong->DinhDang->TenDinhDang}} </td>
+									<td> {{$v->SuatChieu->Phim->TenPhim}} </td>
+									<td> {{$v->SuatChieu->NgayChieu}} </td>
+									<td> {{$v->SuatChieu->GioBatDau}} </td>
+									<td> {{$v->SuatChieu->GiaVe}} </td>	
+									<td> {{$v->Ghe->LoaiGhe}}</td>																									
+								</tr>
+								@endforeach	
+																  
 							</tbody>
 					  	</table>
 					</div>

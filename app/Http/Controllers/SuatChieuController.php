@@ -37,7 +37,7 @@ class SuatChieuController extends Controller
         $orm = new SuatChieu();
         $orm->IDPhim = $request->phim;
         $orm->IDPhong = $request->phong;
-        $orm->NgayChieu = Carbon::parse($request->ngaychieu)->format('yy/m/d');
+        $orm->NgayChieu = Carbon::parse($request->ngaychieu)->format('Y/m/d');
         $orm->GioBatDau = $request->giobatdau;
         $orm->GiaVe = $request->giave;
         $orm->save();
@@ -112,6 +112,26 @@ class SuatChieuController extends Controller
             ->get();
             foreach($giochieu as $gc){
                 $output .= '<option value="'.$gc->GioBatDau.'">'.$gc->GioBatDau.'</option>';
+            }
+        }               
+        echo $output;
+    }
+
+    public function getAjaxSuatChieu(Request $request){
+        $data = $request->all();
+        if ($data['ngaychieu'] && $data['giochieu']){
+            $output = "";
+            $dinhdang = DB::table('suatchieu as sc')
+            ->select('p.id as IDPhong','dd.TenDinhDang', 'sc.GiaVe')
+            ->join('phong as p', 'sc.IDPhong', '=', 'p.id')
+            ->join('dinhdang as dd', 'dd.id', '=', 'p.IDDinhDang')
+            ->where('sc.IDPhim','=', $data['idphim'])
+            ->where('sc.NgayChieu', '=', $data['ngaychieu'])
+            ->where('sc.GioBatDau', '=', $data['giochieu'])
+            ->orderBy('dd.TenDinhDang','ASC')
+            ->get();
+            foreach($dinhdang as $dd){
+                $output .= '<option gia="'.$dd->GiaVe.'" value="'.$dd->IDPhong.'">'.$dd->TenDinhDang.'</option>';
             }
         }               
         echo $output;
